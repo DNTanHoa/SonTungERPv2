@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="RootGroup">
+            <LayoutGroup Id="ImageGroup" Caption="ImageGroup(3)" RelativeSize="12.760736196319018" Removed="True">
+              <LayoutItem Id="LogonImage" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EditorsGroup">
+              <LayoutGroup Id="Text" RelativeSize="89.5798319327731" Removed="True">
+                <LayoutItem Id="LogonText" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

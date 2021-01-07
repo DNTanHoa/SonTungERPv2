@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Phần mềm quản lý nhân sự" Copyright="Bản quyền 2020 Công ty TNHH Sơn Tùng">
+  <ActionDesign>
+    <Actions>
+      <Action Id="Cancel" Caption="Thoát" ConfirmationMessage="" PaintStyle="CaptionAndImage" />
+      <Action Id="CancelAction" Caption="Thoát" ImageName="Cancel" />
+      <Action Id="ChangePasswordByUser" Caption="Đổi mật khẩu" />
+      <Action Id="Close" Caption="Đóng" />
+      <Action Id="Delete" ShortCaption="Xóa" ConfirmationMessage="Đồng ý xóa những bản ghi đã chọn?" Caption="Xóa" />
+      <Action Id="Delete Item" Caption="Xóa" ConfirmationMessage="Đồng ý xóa bản ghi hiện tại?" />
+      <Action Id="DialogCancel" Caption="Thoát" />
+      <Action Id="DialogOK" Caption="Xác nhận" />
+      <Action Id="FullTextSearch" Caption="Tìm kiếm" NullValuePrompt="Từ khóa" />
+      <Action Id="Link" Caption="Liên kết" />
+      <Action Id="Logoff" Caption="Đăng xuất" />
+      <Action Id="Logon" Caption="Đăng nhập" />
+      <Action Id="MyDetails" Caption="Tài khoản" />
+      <Action Id="New" Caption="Thêm mới" />
+      <Action Id="Refresh" ShortCaption="Tải lại" Caption="Tải lại" />
+      <Action Id="RefreshAction" Caption="Tải lại" />
+      <Action Id="Save" Caption="Lưu" />
+      <Action Id="SaveAndClose" Caption="Lưu và thoát" />
+      <Action Id="SaveAndNew" Caption="Lưu và thêm mới" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRoleBase">
+      <OwnMembers>
+        <Member Name="IsAdministrative" Caption="Nhóm Admin" />
+        <Member Name="Name" Caption="Tên nhóm quyền" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser">
+      <OwnMembers>
+        <Member Name="UserName" Caption="Tên đăng nhập" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="@a08109fa-8c20-49c8-b5b9-ea3d201b7ae7" Caption="Nhân viên" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@2dfaa567-bf6e-4f14-a4df-71309afda745" ViewId="Employee_ListView" Caption="Danh sách" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Recruitment" Caption="Tuyển dụng" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@36a419c4-88ac-4829-98dc-1c22edafe9a6" ViewId="Candidate_ListView" IsNewNode="True" />
+          <Item Id="@4f11564f-52a7-4b91-86e9-88c15d3a8e9e" ViewId="RecruitmentPlan_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Category" Caption="Danh mục" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@1165c00b-664a-447c-ba53-70a1f9cbc6ec" ViewId="Nationality_ListView" IsNewNode="True" />
+          <Item Id="@1bd2cb4f-ec04-4fc5-88be-fbbc637e1ec5" ViewId="Province_ListView" IsNewNode="True" />
+          <Item Id="@202f24b5-7a91-43ad-9ba7-e22214d83506" ViewId="RecruitmentPlanStatus_ListView" IsNewNode="True" />
+          <Item Id="@45bcd94d-abd8-42ab-8d6e-a8e75e6969c3" ViewId="District_ListView" Caption="Quận - Huyện" IsNewNode="True" />
+          <Item Id="@80d4bb9b-15da-4e21-97ea-57026d3028da" ViewId="Designation_ListView" IsNewNode="True" />
+          <Item Id="@8323a475-e30b-4b9b-9481-f579acf8c29e" ViewId="Nation_ListView" IsNewNode="True" />
+          <Item Id="@ac84fad7-0127-4c03-a668-99cffdf49c8b" ViewId="School_ListView" Caption="Nơi đào tạo" IsNewNode="True" />
+          <Item Id="@c73ff8c0-2368-4384-a5a0-758bd10c4cec" ViewId="Gender_ListView" IsNewNode="True" />
+          <Item Id="@e2af8c8b-3689-4826-ba43-b644db55e681" ViewId="Ward_ListView" Caption="Xã - Phường" IsNewNode="True" />
+          <Item Id="@edfe1bb4-9466-4c81-8011-0c8eaf7696df" ViewId="EmployeeStatus_ListView" IsNewNode="True" />
+          <Item Id="Department" ViewId="Department_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="@cb0ea553-796e-4201-8580-54410ee36b86" Caption="Thành viên" Index="99" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@44ce9dcc-e0da-4bb4-9e88-dbb8cad8b7ee" ViewId="PermissionPolicyUser_DetailView" ObjectKey="@CurrentUserID" Caption="Thông tin tài khoản" IsNewNode="True" />
+          <Item Id="@6fad7e22-e330-4969-b3bc-e120055c341b" ViewId="PermissionPolicyUser_ListView" Caption="Thành viên" IsNewNode="True" />
+          <Item Id="@ba01a57e-2b4c-4e5b-b772-12ec8569269a" ViewId="PermissionPolicyRole_ListView" Caption="Phân quyền" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Default" Removed="True">
+        <Items>
+          <Item Id="Department_ListView" Removed="True" />
+          <Item Id="Designation_ListView" Removed="True" />
+          <Item Id="District_ListView" Removed="True" />
+          <Item Id="EmployeeStatus_ListView" Removed="True" />
+          <Item Id="Gender_ListView" Removed="True" />
+          <Item Id="Job_ListView" Removed="True" />
+          <Item Id="Nation_ListView" Removed="True" />
+          <Item Id="Nationality_ListView" Removed="True" />
+          <Item Id="Province_ListView" Removed="True" />
+          <Item Id="RecruitmentPlan_ListView" Removed="True" />
+          <Item Id="RecruitmentPlanStatus_ListView" Removed="True" />
+          <Item Id="Ward_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Removed="True" />
+    </Items>
+  </NavigationItems>
+  <Options>
+    <Dashboards EnableCustomization="False" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="20.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Validation>
+    <ErrorMessageTemplates>
+      <RuleRequiredField MessageTemplateMustNotBeEmpty="&quot;{TargetPropertyName}&quot; Không được để trống." />
+    </ErrorMessageTemplates>
+  </Validation>
+  <Views>
+    <DetailView Id="AuthenticationStandardLogonParameters_Blazor_DetailView" Caption="Đăng nhập hệ thống">
+      <Items>
+        <StaticText Id="LogonText" Caption="LogonText(5)" />
+        <PropertyEditor Id="Password" Caption="Mật khẩu" />
+        <PropertyEditor Id="UserName" Caption="Tên đăng nhập" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="RootGroup" Direction="Vertical" RelativeSize="100">
+            <LayoutGroup Id="EditorsGroup" RelativeSize="100">
+              <LayoutGroup Id="Editors" RelativeSize="100" Index="0">
+                <LayoutItem Id="LogonLogo" ViewItem="LogonLogo" Index="0" RelativeSize="84.87394957983193" MaxSize="100, 100" IsNewNode="True" />
+                <LayoutItem Id="UserName" Index="1" RelativeSize="6.722689075630252" />
+                <LayoutItem Id="Password" Index="2" RelativeSize="8.403361344537815" />
+              </LayoutGroup>
+              <LayoutGroup Id="Text" Caption="Text(4)" RelativeSize="87.06666666666666" Removed="True">
+                <LayoutItem Id="LogonText" RelativeSize="100" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView">
+      <Items>
+        <StaticImage Id="LogonImage" Caption="LogonImage(4)" />
+        <StaticText Id="LogonText" Text="" Removed="True" />
+        <PropertyEditor Id="Password" Caption="Mật khẩu" />
+        <PropertyEditor Id="UserName" Caption="Tên đăng nhập" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="RootGroup" RelativeSize="100" Direction="Vertical">
+            <LayoutGroup Id="EditorsGroup" RelativeSize="100" Index="0">
+              <LayoutGroup Id="Editors" RelativeSize="100" Index="0">
+                <LayoutItem Id="UserName" Index="0" RelativeSize="5.378151260504202" />
+                <LayoutItem Id="Password" Index="1" RelativeSize="94.6218487394958" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ChangePasswordOnLogonParameters_Blazor_DetailView">
+      <Items>
+        <PropertyEditor Id="ConfirmPassword" Caption="Xác nhận mật khẩu" />
+        <PropertyEditor Id="NewPassword" Caption="Mật khẩu mới" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" Index="0" RelativeSize="100">
+            <LayoutGroup Id="ChangePasswordOnLogonParameters" RelativeSize="100">
+              <LayoutItem Id="NewPassword" RelativeSize="6.4" />
+              <LayoutItem Id="ConfirmPassword" RelativeSize="93.6" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Employee_DetailView" Caption="Thông tin nhân viên" RequiredFieldMark="(*)">
+      <Items>
+        <PropertyEditor Id="Avartar" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.ImagePropertyEditor" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Employee" RelativeSize="63.22701688555347" Caption="Thông tin chung">
+              <LayoutGroup Id="Employee_col1" RelativeSize="50">
+                <LayoutItem Id="Avartar" ViewItem="Avartar" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
+                <LayoutItem Id="Code" RelativeSize="7.894736842105263" Index="1" />
+                <LayoutItem Id="FullName" RelativeSize="7.894736842105263" Index="2" />
+                <LayoutItem Id="Gender" RelativeSize="7.894736842105263" Index="3" />
+                <LayoutItem Id="DateOfBirth" RelativeSize="7.894736842105263" Index="4" />
+                <LayoutItem Id="DateOfJoining" RelativeSize="7.894736842105263" Index="5" />
+                <LayoutItem Id="TaxCode" RelativeSize="7.894736842105263" Index="6" />
+                <LayoutItem Id="Department" RelativeSize="42.10526315789474" Index="7" />
+                <LayoutItem Id="Designation" RelativeSize="9.375" Index="8" Removed="True" />
+                <LayoutItem Id="Job" RelativeSize="28.571428571428573" Index="8" Removed="True" />
+                <LayoutItem Id="Nation" RelativeSize="11.428571428571429" Index="10" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Employee_col2" RelativeSize="50">
+                <LayoutItem Id="Designation" ViewItem="Designation" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
+                <LayoutItem Id="Job" ViewItem="Job" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Nation" ViewItem="Nation" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Religion" RelativeSize="7.894736842105263" Index="3" />
+                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="4" />
+                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="5" />
+                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="6" />
+                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="7" />
+                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="8" />
+                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="9" />
+                <LayoutItem Id="Major" RelativeSize="7.894736842105263" Index="10" />
+                <LayoutItem Id="MaritalStatus" RelativeSize="10.526315789473685" Index="11" />
+                <LayoutItem Id="Avartar" RelativeSize="9.16030534351145" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="36.77298311444653">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="20.38216560509554" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="15.286624203821656" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="15.286624203821656" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="49.044585987261144" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="CreateDate" Removed="True" />
+              <LayoutItem Id="CreateUser" Removed="True" />
+              <LayoutItem Id="UpdateDate" Removed="True" />
+              <LayoutItem Id="UpdateUser" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Employee_ListView" ShowFindPanel="True" Caption="Danh sách nhân viên">
+      <Columns>
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="DisplayName" PropertyName="DisplayName" Index="-1" Width="400" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PermissionPolicyRole_DetailView" Caption="Thông tin nhóm quyền">
+      <Items>
+        <PropertyEditor Id="Oid" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors1" ShowCaption="False" RelativeSize="10.420168067226891">
+            <LayoutItem Id="Name" RelativeSize="51.61290322580645" />
+            <LayoutItem Id="IsAdministrative" RelativeSize="48.38709677419355" />
+            <LayoutItem Id="PermissionPolicy" Index="2" RelativeSize="34.883720930232556" Removed="True" />
+            <LayoutItem Id="CanEditModel" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs1" RelativeSize="89.5798319327731">
+            <LayoutGroup Id="Users" ShowCaption="True" RelativeSize="100" Caption="Thành viên">
+              <LayoutItem Id="Users" Index="0" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="TypePermissions" ShowCaption="True" RelativeSize="100" Caption="Đối tượng">
+              <LayoutItem Id="TypePermissions" Index="0" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="NavigationPermissions" ShowCaption="True" RelativeSize="100" Caption="Điều hướng">
+              <LayoutItem Id="NavigationPermissions" Index="0" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="ActionPermissions" ShowCaption="True" RelativeSize="100" Caption="Thao tác">
+              <LayoutItem Id="ActionPermissions" Index="0" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PermissionPolicyRole_ListView" Caption="Phân quyền hệ thống">
+      <Columns>
+        <ColumnInfo Id="CanEditModel" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="PermissionPolicy" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRole_Users_ListView">
+      <Columns>
+        <ColumnInfo Id="IsActive" Caption="Kích hoạt" />
+        <ColumnInfo Id="ChangePasswordOnFirstLogon" Caption="Bắt buộc đổi mật khẩu" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_NavigationPermissions_ListView">
+      <Columns>
+        <ColumnInfo Id="ItemPath" Caption="Điều hướng" />
+        <ColumnInfo Id="NavigateState" Caption="Đường dẫn" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="Role" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_TypePermissions_ListView">
+      <Columns>
+        <ColumnInfo Id="TargetType" Caption="Đối tượng" />
+        <ColumnInfo Id="CreateState" Caption="Thêm mới" Index="1" />
+        <ColumnInfo Id="ReadState" Caption="Xem" />
+        <ColumnInfo Id="WriteState" Caption="Chỉnh sửa" />
+        <ColumnInfo Id="DeleteState" Caption="Xóa" />
+        <ColumnInfo Id="NavigateState" Caption="Điều hướng" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="Role" Removed="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PermissionPolicyUser_DetailView" Caption="Thông tin thành viên" DefaultFocusedItem="UserName">
+      <Items>
+        <PropertyEditor Id="ChangePasswordOnFirstLogon" Caption="Bắt buộc đổi mật khẩu" />
+        <PropertyEditor Id="IsActive" Caption="Kích hoạt" />
+        <PropertyEditor Id="UserName" Caption="Tài khoản" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="14.453781512605042">
+            <LayoutGroup Id="PermissionPolicyUser" RelativeSize="100">
+              <LayoutItem Id="ChangePasswordOnFirstLogon" RelativeSize="37.2093023255814" />
+              <LayoutItem Id="UserName" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="IsActive" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Roles_Group" Direction="Vertical" RelativeSize="85.54621848739495" Caption="Phân quyền">
+            <LayoutItem Id="Roles" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PermissionPolicyUser_ListView" Caption="Thành viên hê thống">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Tên đăng nhập" />
+        <ColumnInfo Id="ChangePasswordOnFirstLogon" Width="93" Caption="Bắt buộc đổi mật khẩu" />
+        <ColumnInfo Id="IsActive" Width="86" Caption="Kích hoạt" />
+        <ColumnInfo Id="Oid" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyUser_Roles_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Tên phân quyền" />
+        <ColumnInfo Id="IsAdministrative" Width="77" Caption="Admin" />
+        <ColumnInfo Id="CanEditModel" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RecruitmentPlan_DetailView" ImageName="BO_Appearance" />
+    <ListView Id="RecruitmentPlan_ListView" TopReturnedObjects="100">
+      <Columns>
+        <ColumnInfo Id="Title" Width="200" />
+        <ColumnInfo Id="FromDate" Width="100" />
+        <ColumnInfo Id="ToDate" Width="100" />
+        <ColumnInfo Id="CreateDate" Removed="True" />
+        <ColumnInfo Id="CreateUser" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="UpdateDate" Removed="True" />
+        <ColumnInfo Id="UpdateUser" Removed="True" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

@@ -1,0 +1,33 @@
+﻿@using DevExpress.ExpressApp.Blazor.Components
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <div>
+        <img src="images/sontung.png" />
+    </div>
+    <div class="my-2">
+        <p class="h4 text-center">@Caption</p>
+    </div>
+    <div class="my-2">
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+@code {
+    [CascadingParameter(Name = "ImagePath")]
+    protected string ImagePath { get; set; }
+
+    [CascadingParameter(Name = "Caption")]
+    public string Caption { get; set; }
+}

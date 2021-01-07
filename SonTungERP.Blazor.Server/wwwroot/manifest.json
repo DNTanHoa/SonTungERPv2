@@ -1,0 +1,16 @@
+﻿{
+  "name": "Nhân sự",
+  "short_name": "Nhân sự",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "Phần mềm quản lý nhân sự",
+  "theme_color": "#2A3443",
+  "icons": [
+    {
+      "src": "./images/sontung.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
