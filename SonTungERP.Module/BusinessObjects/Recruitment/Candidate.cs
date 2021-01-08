@@ -89,8 +89,8 @@ namespace SonTungERP.Module.BusinessObjects
         [XafDisplayName("Trường học")]
         public string School
         {
-            get => education;
-            set => SetPropertyValue(nameof(Education), ref education, value);
+            get => school;
+            set => SetPropertyValue(nameof(School), ref school, value);
         }
 
         [XafDisplayName("Ngày vào làm (DK)")]

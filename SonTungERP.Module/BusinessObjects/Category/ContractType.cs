@@ -8,25 +8,20 @@ using System.Text;
 
 namespace SonTungERP.Module.BusinessObjects
 {
-    [XafDisplayName("Bộ phận")]
+    [XafDisplayName("Loại hợp đồng")]
     [DefaultClassOptions]
     [DefaultProperty(nameof(DisplayName))]
-    public class Department : SystemBaseObject
+    public class ContractType : SystemBaseObject
     {
-        public Department(Session session) 
-            : base(session)
+        public ContractType(Session session) : base(session)
         {
 
         }
 
-        public override void AfterConstruction()
-        {
-            base.AfterConstruction();
-        }
-
-        string name;
         string code;
-        Group group;
+        string name;
+        int? month;
+        int? day;
 
         [XafDisplayName("Mã quản lý")]
         public string Code
@@ -35,18 +30,25 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        [XafDisplayName("Tên bộ phận")]
+        [XafDisplayName("Loại hợp đồng")]
         public string Name
         {
             get => name;
             set => SetPropertyValue(nameof(Name), ref name, value);
         }
 
-        [XafDisplayName("Nhóm")]
-        public Group Group
+        [XafDisplayName("Số tháng")]
+        public int? Month
         {
-            get => group;
-            set => SetPropertyValue(nameof(Group), ref group, value);
+            get => month;
+            set => SetPropertyValue(nameof(Month), ref month, value);
+        }
+
+        [XafDisplayName("Số ngày")]
+        public int? Day
+        {
+            get => day;
+            set => SetPropertyValue(nameof(Day), ref day, value);
         }
 
         [NonPersistent]

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using DevExpress.Blazor
+@using SonTungERP.Module.Blazor.Editors.ComponentModel
+<DxTimeEdit Time=@Time
+            TimeChanged=@((TimeSpan newValue) => OnTimeChanged(newValue)) />
+@code {
+    [Parameter]
+    public TimeInputModel ComponentModel { get; set; }
+
+    public TimeSpan Time => ComponentModel.Value.HasValue ? ((DateTime)ComponentModel.Value).TimeOfDay
+        : DateTime.Now.TimeOfDay;
+
+    void OnTimeChanged(TimeSpan newValue)
+    {
+        DateTime value = DateTime.Today.Add(newValue);
+        ComponentModel.SetValueFromUI(value);
+    }
+
+    public static RenderFragment Create(TimeInputModel componentModel) =>
+    @<TimeEditor ComponentModel=@componentModel />;
+}

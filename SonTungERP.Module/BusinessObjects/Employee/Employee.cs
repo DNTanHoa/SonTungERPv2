@@ -5,6 +5,7 @@ using SonTungERP.Module.Ultilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 
 namespace SonTungERP.Module.BusinessObjects
@@ -37,8 +38,11 @@ namespace SonTungERP.Module.BusinessObjects
         EducationLevel educationLevel;
         School school;
         string major;
-        byte[] avartar;
+        string avartar;
+        byte[] avartarData;
         MaritalStatus maritalStatus;
+
+        bool hasLeft;
 
         [XafDisplayName("Mã nhân viên")]
         public string Code
@@ -167,21 +171,54 @@ namespace SonTungERP.Module.BusinessObjects
         }
 
         [XafDisplayName("Ảnh đại diện")]
+        [VisibleInListView(false)]
         [ImageEditor(ListViewImageEditorMode = ImageEditorMode.DropDownPictureEdit,
             DetailViewImageEditorFixedWidth = 220,
             DetailViewImageEditorFixedHeight = 220,
             DetailViewImageEditorMode = ImageEditorMode.DropDownPictureEdit)]
-        public byte[] Avartar
+        [NonPersistent]
+        public byte[] AvartarData
         {
-            get => avartar;
+            get
+            {
+                if(!string.IsNullOrEmpty(this.Avartar))
+                {
+                    return File.ReadAllBytes(PathHelper.GetApplicationFolder() + this.Avartar);
+                }
+                else
+                {
+                    return null;
+                }    
+            }
             set  
             {
+                SetPropertyValue(nameof(AvartarData), ref avartarData, value);
                 if(value != null)
                 {
                     byte[] data = value as byte[];
-                    data.SaveAsFile(PathHelper.GetApplicationFolder() + "image.jpg");
-                }    
+                    var path = PathHelper.GetApplicationFolder()
+                        + "wwwroot/Upload/Images/" + DateTime.Now.ToString("yyyyMMddHHmmsstt") + ".jpg";
+                    using (FileStream stream = File.Create(path))
+                    {
+                        stream.Close();
+                        File.WriteAllBytes(path, value);
+                    }
+                    this.Avartar = path.Replace(PathHelper.GetApplicationFolder(),"");
+                }
+                else
+                {
+                    this.Avartar = string.Empty;
+                }
             }
+        }
+
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        [Size(1000)]
+        public string Avartar
+        {
+            get => avartar;
+            set => SetPropertyValue<string>(nameof(Avartar), ref avartar, value);
         }
 
         [XafDisplayName("Tình trạng hôn nhân")]
@@ -195,5 +232,42 @@ namespace SonTungERP.Module.BusinessObjects
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
         public string DisplayName => this.Code + "-" + this.FullName;
+
+        [XafDisplayName("Nghỉ việc")]
+        public bool HasLeft
+        {
+            get => hasLeft;
+            set => SetPropertyValue(nameof(HasLeft), ref hasLeft, value);
+        }
+
+        #region Association
+        [Association]
+        [XafDisplayName("Hợp đồng")]
+        public XPCollection<EmployeeContract> Contracts => GetCollection<EmployeeContract>(nameof(Contracts));
+
+        [Association]
+        [XafDisplayName("Bảo hiểm")]
+        public XPCollection<EmployeeInsurance> Insurances => GetCollection<EmployeeInsurance>(nameof(Insurances));
+
+        [Association]
+        [XafDisplayName("Quan hệ")]
+        public XPCollection<EmployeeRelative> Relatives => GetCollection<EmployeeRelative>(nameof(Relatives));
+
+        [Association]
+        [XafDisplayName("Liên hệ")]
+        public XPCollection<EmployeeContact> Contacts => GetCollection<EmployeeContact>(nameof(Contacts));
+
+        [Association]
+        [XafDisplayName("Tài khoản ngân hàng")]
+        public XPCollection<EmployeeBankAccount> BankAccounts => GetCollection<EmployeeBankAccount>(nameof(BankAccounts));
+
+        [Association]
+        [XafDisplayName("Chuyển bộ phận")]
+        public XPCollection<EmployeeTransfer> EmployeeTransfers => GetCollection<EmployeeTransfer>(nameof(EmployeeTransfers));
+
+        [Association]
+        [XafDisplayName("Thăng tiến")]
+        public XPCollection<EmplyeeUpgrade> EmplyeeUpgrades => GetCollection<EmplyeeUpgrade>(nameof(EmplyeeUpgrades));
+        #endregion
     }
 }

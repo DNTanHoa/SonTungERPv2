@@ -8,45 +8,31 @@ using System.Text;
 
 namespace SonTungERP.Module.BusinessObjects
 {
-    [XafDisplayName("Bộ phận")]
+    [XafDisplayName("Loại nghỉ việc")]
     [DefaultClassOptions]
     [DefaultProperty(nameof(DisplayName))]
-    public class Department : SystemBaseObject
+    public class LeftReasonType : SystemBaseObject
     {
-        public Department(Session session) 
-            : base(session)
+        public LeftReasonType(Session session) : base(session)
         {
 
         }
 
-        public override void AfterConstruction()
-        {
-            base.AfterConstruction();
-        }
-
-        string name;
         string code;
-        Group group;
+        string name;
 
-        [XafDisplayName("Mã quản lý")]
+        [XafDisplayName("Ký hiệu")]
         public string Code
         {
             get => code;
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        [XafDisplayName("Tên bộ phận")]
+        [XafDisplayName("Loại nghỉ việc")]
         public string Name
         {
             get => name;
             set => SetPropertyValue(nameof(Name), ref name, value);
-        }
-
-        [XafDisplayName("Nhóm")]
-        public Group Group
-        {
-            get => group;
-            set => SetPropertyValue(nameof(Group), ref group, value);
         }
 
         [NonPersistent]

@@ -35,12 +35,49 @@
         <Member Name="UserName" Caption="Tên đăng nhập" />
       </OwnMembers>
     </Class>
+    <Class Name="SonTungERP.Module.BusinessObjects.Employee">
+      <OwnMembers>
+        <Member Name="HasLeft" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="SonTungERP.Module.BusinessObjects.EmployeeContract">
+      <OwnMembers>
+        <Member Name="ExpireDate" DisplayFormat="{0:dd/MM/yyyy}" EditMask="dd/MM/yyyy" />
+        <Member Name="SignedDate" DisplayFormat="{0:dd/MM/yyyy}" EditMask="dd/MM/yyyy" />
+        <Member Name="ValidFromDate" DisplayFormat="{0:dd/MM/yyyy}" EditMask="dd/MM/yyyy" />
+      </OwnMembers>
+    </Class>
+    <Class Name="SonTungERP.Module.BusinessObjects.EmployeeLeft">
+      <OwnMembers>
+        <Member Name="DateOfLeave" DisplayFormat="{0:dd/MM/yyyy}" EditMask="dd/MM/yyyy" />
+      </OwnMembers>
+    </Class>
+    <Class Name="SonTungERP.Module.BusinessObjects.ShiftTime">
+      <OwnMembers>
+        <Member Name="FromTime" DisplayFormat="{0:HH:mm}" EditMask="HH:mm" />
+        <Member Name="ToTime" DisplayFormat="{0:HH:mm}" />
+      </OwnMembers>
+    </Class>
   </BOModel>
   <NavigationItems>
     <Items>
+      <Item Id="@68aac97b-1f69-45a5-ae4e-ba000f237027" Caption="Báo cáo" Index="-2" IsNewNode="True" />
+      <Item Id="@fee06bd0-1779-4ec2-a888-200159f3351a" Caption="Thống kê" Index="-1" IsNewNode="True" />
       <Item Id="@a08109fa-8c20-49c8-b5b9-ea3d201b7ae7" Caption="Nhân viên" Index="0" IsNewNode="True">
         <Items IsNewNode="True">
-          <Item Id="@2dfaa567-bf6e-4f14-a4df-71309afda745" ViewId="Employee_ListView" Caption="Danh sách" IsNewNode="True" />
+          <Item Id="@2dfaa567-bf6e-4f14-a4df-71309afda745" ViewId="Employee_ListView" Caption="Danh sách" Index="0" IsNewNode="True" />
+          <Item Id="@86d1b0f9-fcf7-4258-9c32-dc1f50b3e5f5" ViewId="EmployeeContract_ListView" Index="1" Caption="Hợp đồng" IsNewNode="True" />
+          <Item Id="@6d28cc2b-75d7-482d-bf8e-2cbc219063cf" ViewId="EmployeeInsurance_ListView" Index="2" IsNewNode="True" />
+          <Item Id="@a94a5352-4096-4cb9-889f-23b8d22519ca" ViewId="EmployeeRelative_ListView" Index="3" IsNewNode="True" />
+          <Item Id="@98413f43-12cf-4dc8-adf2-d83d66198456" ViewId="EmployeeLeft_ListView" Index="99" IsNewNode="True" />
+          <Item Id="@2c0a9d3c-9c8c-4433-88d5-6cf41f064bba" ViewId="EmployeeContact_ListView" IsNewNode="True" />
+          <Item Id="@d28d5a36-8ad7-40ca-855a-19eef7a1382e" ViewId="EmployeeBankAccount_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="@f3bd05d5-3139-4c6e-8612-fe12b837e3f7" Caption="Quá trình" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@c2a37240-ad5c-4191-95ba-305c4f96950b" ViewId="EmplyeeUpgrade_ListView" IsNewNode="True" />
+          <Item Id="@c5acca2b-d6c2-4865-949a-66993566251b" ViewId="EmployeeTransfer_ListView" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Recruitment" Caption="Tuyển dụng" Index="1" IsNewNode="True">
@@ -49,18 +86,41 @@
           <Item Id="@4f11564f-52a7-4b91-86e9-88c15d3a8e9e" ViewId="RecruitmentPlan_ListView" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Category" Caption="Danh mục" Index="2" IsNewNode="True">
+      <Item Id="@5e060ec0-00f6-44dd-96cc-635c47deccc2" Caption="Quản lý ca" Index="2" IsNewNode="True">
         <Items IsNewNode="True">
+          <Item Id="@8d0eb8db-33cd-4456-bb79-2e5994326656" ViewId="ShiftAssigment_ListView" IsNewNode="True" />
+          <Item Id="@944b9af7-d5b2-4911-9cb9-6eb03cd9699d" ViewId="ShiftType_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="@a132e02f-07b9-4815-8e23-6f7ca4d56bf5" Caption="Chấm công" Index="3" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@68f2fff2-91d1-4c7f-bc45-f7adb49c9316" ViewId="EmployeeAttendance_ListView" Index="0" IsNewNode="True" />
+          <Item Id="@7669370d-9126-4ff0-8349-d027c55d65f1" ViewId="EmployeeCheckIn_ListView" Index="1" IsNewNode="True" />
+          <Item Id="@80108ef7-6c34-426c-bdf2-cc7277cc7056" ViewId="EmployeeLeaveApplication_ListView" Index="2" IsNewNode="True" />
+          <Item Id="@3dadba4c-e9fa-44f9-b19c-025f94a71411" ViewId="EmployeeOutsideDocument_ListView" Caption="Giấy ra cổng" Index="3" IsNewNode="True" />
+          <Item Id="@902d8664-7824-4075-b00a-ed26c4040193" ViewId="EmployeeGoOnBussiness_ListView" Index="4" IsNewNode="True" />
+          <Item Id="@eb86c472-278e-41af-b1e9-d488c891c8af" ViewId="LeaveType_ListView" Index="99" IsNewNode="True" />
+          <Item Id="@c230dd9e-ce27-4eb5-9d00-be746d750ede" ViewId="OutsideReason_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Category" Caption="Danh mục" Index="3" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@10d77980-d1af-4596-b936-770ce952a8dd" ViewId="RelativeType_ListView" IsNewNode="True" />
           <Item Id="@1165c00b-664a-447c-ba53-70a1f9cbc6ec" ViewId="Nationality_ListView" IsNewNode="True" />
+          <Item Id="@18680fea-480d-48f7-b861-0bc6de697277" ViewId="Bank_ListView" IsNewNode="True" />
           <Item Id="@1bd2cb4f-ec04-4fc5-88be-fbbc637e1ec5" ViewId="Province_ListView" IsNewNode="True" />
           <Item Id="@202f24b5-7a91-43ad-9ba7-e22214d83506" ViewId="RecruitmentPlanStatus_ListView" IsNewNode="True" />
           <Item Id="@45bcd94d-abd8-42ab-8d6e-a8e75e6969c3" ViewId="District_ListView" Caption="Quận - Huyện" IsNewNode="True" />
+          <Item Id="@57a05c70-30bd-41f3-8b68-1e921ce92286" ViewId="ContractType_ListView" Caption="Loại hợp đồng" IsNewNode="True" />
           <Item Id="@80d4bb9b-15da-4e21-97ea-57026d3028da" ViewId="Designation_ListView" IsNewNode="True" />
           <Item Id="@8323a475-e30b-4b9b-9481-f579acf8c29e" ViewId="Nation_ListView" IsNewNode="True" />
+          <Item Id="@97f0a797-5e72-490e-bb65-267b6b4aa263" ViewId="Group_ListView" IsNewNode="True" />
           <Item Id="@ac84fad7-0127-4c03-a668-99cffdf49c8b" ViewId="School_ListView" Caption="Nơi đào tạo" IsNewNode="True" />
           <Item Id="@c73ff8c0-2368-4384-a5a0-758bd10c4cec" ViewId="Gender_ListView" IsNewNode="True" />
+          <Item Id="@d8b2c754-7803-4594-8f06-28c62283a49e" ViewId="HealthInsuranceRegisterPlace_ListView" IsNewNode="True" />
           <Item Id="@e2af8c8b-3689-4826-ba43-b644db55e681" ViewId="Ward_ListView" Caption="Xã - Phường" IsNewNode="True" />
           <Item Id="@edfe1bb4-9466-4c81-8011-0c8eaf7696df" ViewId="EmployeeStatus_ListView" IsNewNode="True" />
+          <Item Id="@fcbfe58e-e865-4f96-a1ae-95b5ccb4cfe1" ViewId="LeftReasonType_ListView" IsNewNode="True" />
           <Item Id="Department" ViewId="Department_ListView" IsNewNode="True" />
         </Items>
       </Item>
@@ -163,47 +223,50 @@
     </DetailView>
     <DetailView Id="Employee_DetailView" Caption="Thông tin nhân viên" RequiredFieldMark="(*)">
       <Items>
-        <PropertyEditor Id="Avartar" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.ImagePropertyEditor" />
+        <PropertyEditor Id="Avartar" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="Employee" RelativeSize="63.22701688555347" Caption="Thông tin chung">
-              <LayoutGroup Id="Employee_col1" RelativeSize="50">
-                <LayoutItem Id="Avartar" ViewItem="Avartar" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
+          <LayoutGroup Id="SimpleEditors" RelativeSize="80.4635761589404">
+            <LayoutGroup Id="Employee" RelativeSize="69.34156378600824" Caption="Thông tin chung">
+              <LayoutGroup Id="Employee_col1" RelativeSize="49.92412746585736">
+                <LayoutItem Id="AvartarData" ViewItem="AvartarData" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
                 <LayoutItem Id="Code" RelativeSize="7.894736842105263" Index="1" />
                 <LayoutItem Id="FullName" RelativeSize="7.894736842105263" Index="2" />
                 <LayoutItem Id="Gender" RelativeSize="7.894736842105263" Index="3" />
                 <LayoutItem Id="DateOfBirth" RelativeSize="7.894736842105263" Index="4" />
                 <LayoutItem Id="DateOfJoining" RelativeSize="7.894736842105263" Index="5" />
                 <LayoutItem Id="TaxCode" RelativeSize="7.894736842105263" Index="6" />
-                <LayoutItem Id="Department" RelativeSize="42.10526315789474" Index="7" />
+                <LayoutItem Id="Department" RelativeSize="7.894736842105263" Index="7" />
                 <LayoutItem Id="Designation" RelativeSize="9.375" Index="8" Removed="True" />
+                <LayoutItem Id="HasLeft" ViewItem="HasLeft" Index="8" RelativeSize="34.21052631578947" IsNewNode="True" />
                 <LayoutItem Id="Job" RelativeSize="28.571428571428573" Index="8" Removed="True" />
+                <LayoutItem Id="Religion" Index="8" RelativeSize="8.571428571428571" Removed="True" />
                 <LayoutItem Id="Nation" RelativeSize="11.428571428571429" Index="10" Removed="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Employee_col2" RelativeSize="50">
+              <LayoutGroup Id="Employee_col2" RelativeSize="50.07587253414264">
                 <LayoutItem Id="Designation" ViewItem="Designation" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
                 <LayoutItem Id="Job" ViewItem="Job" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
                 <LayoutItem Id="Nation" ViewItem="Nation" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Religion" RelativeSize="7.894736842105263" Index="3" />
-                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="4" />
-                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="5" />
-                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="6" />
-                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="7" />
-                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="8" />
-                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="9" />
-                <LayoutItem Id="Major" RelativeSize="7.894736842105263" Index="10" />
+                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="3" />
+                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="4" />
+                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="5" />
+                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="6" />
+                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="7" />
+                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="8" />
+                <LayoutItem Id="Major" RelativeSize="7.894736842105263" Index="9" />
+                <LayoutItem Id="Religion" ViewItem="Religion" Index="10" RelativeSize="7.894736842105263" IsNewNode="True" />
                 <LayoutItem Id="MaritalStatus" RelativeSize="10.526315789473685" Index="11" />
-                <LayoutItem Id="Avartar" RelativeSize="9.16030534351145" Removed="True" />
+                <LayoutItem Id="AvartarData" RelativeSize="7.317073170731708" Removed="True" />
+                <LayoutItem Id="HasLeft" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="SystemBaseObject" RelativeSize="36.77298311444653">
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="30.65843621399177">
               <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
-                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="20.38216560509554" IsNewNode="True" />
-                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="15.286624203821656" IsNewNode="True" />
-                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="15.286624203821656" IsNewNode="True" />
-                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="49.044585987261144" IsNewNode="True" />
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
               </LayoutGroup>
               <LayoutItem Id="CreateDate" Removed="True" />
               <LayoutItem Id="CreateUser" Removed="True" />
@@ -211,6 +274,23 @@
               <LayoutItem Id="UpdateUser" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="19.5364238410596">
+            <LayoutGroup Id="Contracts" RelativeSize="100">
+              <LayoutItem Id="Contracts" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Insurances" RelativeSize="100">
+              <LayoutItem Id="Insurances" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Relatives" RelativeSize="100">
+              <LayoutItem Id="Relatives" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Contacts" RelativeSize="100">
+              <LayoutItem Id="Contacts" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="BankAccounts" RelativeSize="100">
+              <LayoutItem Id="BankAccounts" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
@@ -224,6 +304,75 @@
         <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" IsNewNode="True" Removed="True" />
       </Columns>
     </ListView>
+    <DetailView Id="EmployeeContract_DetailView">
+      <Items>
+        <PropertyEditor Id="BaseSalary" DisplayFormat="{0:N0}" EditMask="N0" />
+        <PropertyEditor Id="CreateDate" Removed="True" />
+        <PropertyEditor Id="CreateUser" Removed="True" />
+        <PropertyEditor Id="InsurranceSalary" DisplayFormat="{0:N0}" EditMask="N0" />
+        <PropertyEditor Id="UpdateDate" Removed="True" />
+        <PropertyEditor Id="UpdateUser" Removed="True" />
+        <PropertyEditor Id="ValidFromDate" DisplayFormat="{0:dd/MM/yyyy}" EditMask="dd/MM/yyyy" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="EmployeeContract" RelativeSize="37.3358348968105" Caption="Hợp đồng nhân viên">
+              <LayoutGroup Id="EmployeeContract_col1" RelativeSize="50">
+                <LayoutItem Id="ContractNumber" RelativeSize="19.27710843373494" />
+                <LayoutItem Id="Type" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="Employee" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="Designation" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="Job" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="SignedDate" RelativeSize="22.89156626506024" />
+              </LayoutGroup>
+              <LayoutGroup Id="EmployeeContract_col2" RelativeSize="50">
+                <LayoutItem Id="ValidFromDate" RelativeSize="19.27710843373494" />
+                <LayoutItem Id="ExpireDate" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="CompanySignPerson" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="BaseSalary" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="InsurranceSalary" RelativeSize="14.457831325301205" />
+                <LayoutItem Id="AttachFile" RelativeSize="22.89156626506024" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="62.6641651031895">
+              <LayoutItem Id="CreateDate" Removed="True" />
+              <LayoutItem Id="CreateUser" Removed="True" />
+              <LayoutItem Id="UpdateDate" Removed="True" />
+              <LayoutItem Id="UpdateUser" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="LeftReasonType_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="LeftReasonType" RelativeSize="20.075046904315197">
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Loại nghỉ việc" IsNewNode="True">
+                <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="45.070422535211264" IsNewNode="True" />
+                <LayoutItem Id="Name" ViewItem="Name" Index="1" RelativeSize="54.929577464788736" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Code" RelativeSize="54.23728813559322" Removed="True" />
+              <LayoutItem Id="Name" RelativeSize="45.76271186440678" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="79.9249530956848">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="8.205128205128204" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="6.153846153846154" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="6.153846153846154" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="79.48717948717949" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="CreateDate" Removed="True" />
+              <LayoutItem Id="CreateUser" Removed="True" />
+              <LayoutItem Id="UpdateDate" Removed="True" />
+              <LayoutItem Id="UpdateUser" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="PermissionPolicyRole_DetailView" Caption="Thông tin nhóm quyền">
       <Items>
         <PropertyEditor Id="Oid" Removed="True" />
@@ -337,5 +486,117 @@
         <ColumnInfo Id="UpdateUser" Removed="True" />
       </Columns>
     </ListView>
+    <DetailView Id="ShiftAssigment_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ShiftAssigment" RelativeSize="23.827392120075046" Caption="Khai báo ca nhân viên">
+              <LayoutGroup Id="ShiftAssigment_col1" RelativeSize="49.926144756277694">
+                <LayoutItem Id="Employee" RelativeSize="34.04255319148936" />
+                <LayoutItem Id="ShiftType" RelativeSize="25.53191489361702" />
+                <LayoutItem Id="Active" ViewItem="Active" Index="2" RelativeSize="40.42553191489362" IsNewNode="True" />
+                <LayoutItem Id="StartDate" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ShiftAssigment_col2" RelativeSize="50.073855243722306">
+                <LayoutItem Id="EndDate" RelativeSize="34.04255319148936" />
+                <LayoutItem Id="StartDate" ViewItem="StartDate" Index="1" RelativeSize="65.95744680851064" IsNewNode="True" />
+                <LayoutItem Id="Active" Index="2" RelativeSize="36.36363636363637" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="76.17260787992495">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="8.719346049046322" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="6.539509536784741" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="6.539509536784741" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="78.2016348773842" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="CreateDate" RelativeSize="5.825242718446602" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="7.281553398058253" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="81.06796116504854" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="5.825242718446602" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ShiftTime_DetailView">
+      <Items>
+        <PropertyEditor Id="FromTime" DisplayFormat="{HH:mm}" EditMask="HH:mm" PropertyEditorType="SonTungERP.Module.Blazor.TimePropertyEditor" />
+        <PropertyEditor Id="ToTime" DisplayFormat="{0:HH:mm}" EditMask="HH:mm" PropertyEditorType="SonTungERP.Module.Blazor.TimePropertyEditor" />
+        <PropertyEditor Id="Type" Caption="Ca" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ShiftTime" Caption="Giờ làm" RelativeSize="31.70731707317073">
+              <LayoutGroup Id="ShiftTime_col1" RelativeSize="43.574593796159526">
+                <LayoutItem Id="Type" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Name" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="FromTime" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="ToTime" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="IsBreakTime" ViewItem="IsBreakTime" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="LateInTimeAllow" RelativeSize="23.529411764705884" Index="4" Removed="True" />
+                <LayoutItem Id="EarlyOutTime" RelativeSize="15" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ShiftTime_col2" RelativeSize="56.425406203840474">
+                <LayoutItem Id="EarlyOutTime" ViewItem="EarlyOutTime" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="IsBreakTime" RelativeSize="15" Index="1" Removed="True" />
+                <LayoutItem Id="IsOvernight" RelativeSize="15" Index="1" Removed="True" />
+                <LayoutItem Id="LateInTimeAllow" ViewItem="LateInTimeAllow" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                <LayoutItem Id="Coefficient" RelativeSize="17.647058823529413" Index="2" />
+                <LayoutItem Id="TotalHours" RelativeSize="17.647058823529413" Index="3" />
+                <LayoutGroup Id="Auto1ff50cfb-5963-46fd-af89-d3bba53c821d" ShowCaption="False" Caption="" Direction="Horizontal" Index="4" RelativeSize="23.529411764705884" IsNewNode="True">
+                  <LayoutItem Id="IsOvernight" ViewItem="IsOvernight" Index="0" RelativeSize="53.66492146596859" IsNewNode="True" />
+                  <LayoutItem Id="IsOvertime" ViewItem="IsOvertime" Index="1" RelativeSize="46.33507853403141" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="IsOvertime" RelativeSize="35" Index="4" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="68.29268292682927">
+              <LayoutItem Id="CreateUser" RelativeSize="8.241758241758241" />
+              <LayoutItem Id="UpdateUser" RelativeSize="6.593406593406593" />
+              <LayoutItem Id="CreateDate" RelativeSize="6.593406593406593" />
+              <LayoutItem Id="UpdateDate" RelativeSize="78.57142857142857" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ShiftType_DetailView">
+      <Items>
+        <PropertyEditor Id="MaxWorkingHour" DisplayFormat="{0:N1}" EditMask="N1" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="28.330206378986865">
+            <LayoutGroup Id="ShiftType" RelativeSize="100" Direction="Horizontal">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="49.35622317596567" Caption="Thông tin ca" IsNewNode="True">
+                <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutItem Id="Name" ViewItem="Name" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="MaxWorkingHour" ViewItem="MaxWorkingHour" Index="2" RelativeSize="50" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Tra cứu" CaptionLocation="Top" Index="1" RelativeSize="50.64377682403433" IsNewNode="True">
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Code" Removed="True" />
+              <LayoutItem Id="MaxWorkingHour" Removed="True" />
+              <LayoutItem Id="Name" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="19.680851063829788" Removed="True">
+              <LayoutItem Id="CreateDate" RelativeSize="22.857142857142858" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="25.714285714285715" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="28.571428571428573" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="22.857142857142858" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Times_Group" Direction="Vertical" RelativeSize="71.66979362101313">
+            <LayoutItem Id="Times" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>
