@@ -10,7 +10,9 @@
       <Action Id="Delete Item" Caption="Xóa" ConfirmationMessage="Đồng ý xóa bản ghi hiện tại?" />
       <Action Id="DialogCancel" Caption="Thoát" />
       <Action Id="DialogOK" Caption="Xác nhận" />
+      <Action Id="DownloadEmployeeImportTemplate" ImageName="ModelEditor_IndexDown" />
       <Action Id="FullTextSearch" Caption="Tìm kiếm" NullValuePrompt="Từ khóa" />
+      <Action Id="ImportEmployeeAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="Link" Caption="Liên kết" />
       <Action Id="Logoff" Caption="Đăng xuất" />
       <Action Id="Logon" Caption="Đăng nhập" />
@@ -340,6 +342,21 @@
               <LayoutItem Id="CreateUser" Removed="True" />
               <LayoutItem Id="UpdateDate" Removed="True" />
               <LayoutItem Id="UpdateUser" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="EmployeeImportParam_DetailView" DefaultFocusedItem="">
+      <Items>
+        <ActionContainerViewItem Id="Template" ActionContainer="Unspecified" Caption="Template(7)" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="EmployeeImportParam" RelativeSize="100" Caption="Chọn file">
+              <LayoutItem Id="Template" ViewItem="Template" Index="0" RelativeSize="6.500956022944551" IsNewNode="True" />
+              <LayoutItem Id="FileImport" Index="1" RelativeSize="93.49904397705545" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

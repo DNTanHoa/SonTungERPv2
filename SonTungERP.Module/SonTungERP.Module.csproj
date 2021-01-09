@@ -35,5 +35,8 @@
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="20.2.4" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="20.2.4" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl" Version="20.2.4" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 </Project>

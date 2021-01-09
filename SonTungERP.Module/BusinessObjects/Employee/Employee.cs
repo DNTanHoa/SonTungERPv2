@@ -41,6 +41,7 @@ namespace SonTungERP.Module.BusinessObjects
         string avartar;
         byte[] avartarData;
         MaritalStatus maritalStatus;
+        Group group;
 
         bool hasLeft;
 
@@ -238,6 +239,13 @@ namespace SonTungERP.Module.BusinessObjects
         {
             get => hasLeft;
             set => SetPropertyValue(nameof(HasLeft), ref hasLeft, value);
+        }
+
+        [XafDisplayName("Nhóm")]
+        public Group Group
+        {
+            get => group;
+            set => SetPropertyValue(nameof(Group), ref group, value);
         }
 
         #region Association
