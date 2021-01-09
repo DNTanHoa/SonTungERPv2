@@ -2,6 +2,7 @@
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,6 +25,7 @@ namespace SonTungERP.Module.BusinessObjects
         string name;
         string code;
         double maxWorkingHour;
+        bool isOvernight;
 
         [XafDisplayName("Mã quản lý")]
         public string Code
@@ -46,8 +48,25 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(MaxWorkingHour), ref maxWorkingHour, value);
         }
 
+        [XafDisplayName("Qua đêm")]
+        public bool IsOvernight
+        {
+            get => isOvernight;
+            set => SetPropertyValue(nameof(IsOvernight), ref isOvernight, value);
+        }
+
         [Association]
         [XafDisplayName("Giờ làm theo ca")]
         public XPCollection<ShiftTime> Times => GetCollection<ShiftTime>(nameof(Times));
+
+        #region alias
+
+        [NonPersistent]
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        public DateTime? AllowInTime 
+            => Times.OrderBy(item => item.FromTime.TimeOfDay).FirstOrDefault()?.AllowedFromTime;
+
+        #endregion
     }
 }

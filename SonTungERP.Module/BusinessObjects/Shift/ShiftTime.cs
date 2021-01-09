@@ -103,8 +103,22 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(IsOvernight), ref isOvernight, value);
         }
 
+        #region alias
+
         [NonPersistent]
         [VisibleInListView(false)]
         public double TotalHours => (this.ToTime - this.FromTime).TotalHours;
+
+        [NonPersistent]
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        public DateTime AllowedFromTime => this.FromTime.AddMinutes(LateInTimeAllow);
+
+        [NonPersistent]
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        public DateTime AllowedOutTime => this.ToTime.AddMinutes(-EarlyOutTime);
+
+        #endregion
     }
 }
