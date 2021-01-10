@@ -185,7 +185,7 @@ namespace SonTungERP.Module.BusinessObjects
             {
                 if(!string.IsNullOrEmpty(this.Avartar))
                 {
-                    return File.ReadAllBytes(PathHelper.GetApplicationFolder() + this.Avartar);
+                    return File.ReadAllBytes(this.Avartar);
                 }
                 else
                 {
@@ -198,14 +198,13 @@ namespace SonTungERP.Module.BusinessObjects
                 if(value != null)
                 {
                     byte[] data = value as byte[];
-                    var path = PathHelper.GetApplicationFolder()
-                        + "wwwroot/Upload/Images/" + DateTime.Now.ToString("yyyyMMddHHmmsstt") + ".jpg";
+                    var path = "wwwroot//Upload//Images//" + DateTime.Now.ToString("yyyyMMddHHmmsstt") + ".jpg";
                     using (FileStream stream = File.Create(path))
                     {
                         stream.Close();
                         File.WriteAllBytes(path, value);
                     }
-                    this.Avartar = path.Replace(PathHelper.GetApplicationFolder(),"");
+                    this.Avartar = path;
                 }
                 else
                 {
