@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sheet name="Liên hệ">
+  <Column propertyName="Code" excelHeader="Mã nhân viên"/>
+  <Column propertyName="PersonalPhone" excelHeader="Điện thoại cá nhân"/>
+  <Column propertyName="PersonalEmail" excelHeader="Email cá nhân"/>
+  <Column propertyName="CompanyPhone" excelHeader="Điện thoại công ty"/>
+  <Column propertyName="CompanyEmail" excelHeader="Email công ty"/>
+  <Column propertyName="OriginAddress" excelHeader="Thường trú"/>
+  <Column propertyName="TemporaryAddress" excelHeader="Tạm trú"/>
+</Sheet>

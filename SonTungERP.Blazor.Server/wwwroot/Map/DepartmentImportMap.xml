@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sheet name="BỘ PHẬN">
+  <Column propertyName="Name" excelHeader="Tên bộ phận"/>
+  <Column propertyName="Code" excelHeader="Mã bộ phận"/>
+  <Column propertyName="Group" excelHeader="Mã nhóm"/>
+</Sheet>

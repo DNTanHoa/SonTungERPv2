@@ -19,22 +19,43 @@ namespace SonTungERP.Module.BusinessObjects
 
         }
 
+        string code;
         string fullName;
         string phone;
         string email;
-        string identityNumber;
+        string identity;
+        IdentiyLicesenPlace identityLicesenPlace;
+        DateTime idetityLicesenDate;
         string education;
         string school;
         string major;
+        Gender gender;
         string originAddress;
         string temporaryAddress;
         DateTime? willJoinDate;
+
+        bool employee;
+        string employeeCode;
+
+        [XafDisplayName("Mã nhân viên")]
+        public string Code
+        {
+            get => code;
+            set => SetPropertyValue(nameof(Code), ref code, value);
+        }
 
         [XafDisplayName("Họ tên")]
         public string FullName
         {
             get => fullName;
             set => SetPropertyValue(nameof(FullName), ref fullName, value);
+        }
+
+        [XafDisplayName("Giới tính")]
+        public Gender Gender
+        {
+            get => gender;
+            set => SetPropertyValue(nameof(Gender), ref gender, value);
         }
 
         [XafDisplayName("Điện thoại")]
@@ -66,10 +87,24 @@ namespace SonTungERP.Module.BusinessObjects
         }
 
         [XafDisplayName("CMND/CCCD")]
-        public string IdentityNumber
+        public string Identity
         {
-            get => identityNumber;
-            set => SetPropertyValue(nameof(IdentityNumber), ref identityNumber, value);
+            get => identity;
+            set => SetPropertyValue(nameof(Identity), ref identity, value);
+        }
+
+        [XafDisplayName("Nơi cấp")]
+        public IdentiyLicesenPlace IdentiyLicesenPlace
+        {
+            get => identityLicesenPlace;
+            set => SetPropertyValue(nameof(IdentiyLicesenPlace), ref identityLicesenPlace, value);
+        }
+
+        [XafDisplayName("Ngày cấp")]
+        public DateTime IdetityLicesenDate
+        {
+            get => idetityLicesenDate;
+            set => SetPropertyValue(nameof(IdetityLicesenDate), ref idetityLicesenDate, value);
         }
 
         [XafDisplayName("Học vấn")]
@@ -98,6 +133,20 @@ namespace SonTungERP.Module.BusinessObjects
         {
             get => willJoinDate;
             set => SetPropertyValue(nameof(WillJoinDate), ref willJoinDate, value);
+        }
+
+        [XafDisplayName("Nhân viên")]
+        public bool Employee
+        {
+            get => employee;
+            set => SetPropertyValue(nameof(Employee), ref employee, value);
+        }
+
+        [XafDisplayName("Mã nhân viên")]
+        public string EmployeeCode
+        {
+            get => employeeCode;
+            set => SetPropertyValue(nameof(EmployeeCode), ref employeeCode, value);
         }
     }
 }

@@ -2,15 +2,9 @@
 <Application>
   <Views Id="Views">
     <DetailView Id="EmployeeImportParam_DetailView">
-      <Layout Id="Layout">
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="EmployeeImportParam">
-              <LayoutItem Id="DownloadTemplate" ViewItem="DownloadTemplate" />
-            </LayoutGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
+      <Items Id="Items">
+        <ActionContainerViewItem Id="Template" ActionContainer="Unspecified" />
+      </Items>
     </DetailView>
     <DetailView Id="AuthenticationStandardLogonParameters_Blazor_DetailView">
       <Layout Id="Layout">

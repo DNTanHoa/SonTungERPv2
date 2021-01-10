@@ -10,9 +10,13 @@
       <Action Id="Delete Item" Caption="Xóa" ConfirmationMessage="Đồng ý xóa bản ghi hiện tại?" />
       <Action Id="DialogCancel" Caption="Thoát" />
       <Action Id="DialogOK" Caption="Xác nhận" />
-      <Action Id="DownloadEmployeeImportTemplate" ImageName="ModelEditor_IndexDown" />
       <Action Id="FullTextSearch" Caption="Tìm kiếm" NullValuePrompt="Từ khóa" />
+      <Action Id="ImportBankAccountAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="ImportDepartmentAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="ImportDesignationAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="ImportEmployeeAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="ImportEmployeeContactAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="ImportHRIPAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="Link" Caption="Liên kết" />
       <Action Id="Logoff" Caption="Đăng xuất" />
       <Action Id="Logon" Caption="Đăng nhập" />
@@ -58,6 +62,11 @@
       <OwnMembers>
         <Member Name="FromTime" DisplayFormat="{0:HH:mm}" EditMask="HH:mm" />
         <Member Name="ToTime" DisplayFormat="{0:HH:mm}" />
+      </OwnMembers>
+    </Class>
+    <Class Name="SonTungERP.Module.Controllers.DepartmentImportParam">
+      <OwnMembers>
+        <Member Name="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
       </OwnMembers>
     </Class>
   </BOModel>
@@ -112,11 +121,13 @@
           <Item Id="@18680fea-480d-48f7-b861-0bc6de697277" ViewId="Bank_ListView" IsNewNode="True" />
           <Item Id="@1bd2cb4f-ec04-4fc5-88be-fbbc637e1ec5" ViewId="Province_ListView" IsNewNode="True" />
           <Item Id="@202f24b5-7a91-43ad-9ba7-e22214d83506" ViewId="RecruitmentPlanStatus_ListView" IsNewNode="True" />
+          <Item Id="@241d1dbf-c9bf-46c0-a54e-6c367c87ba8a" ViewId="IdentiyLicesenPlace_ListView" IsNewNode="True" />
           <Item Id="@45bcd94d-abd8-42ab-8d6e-a8e75e6969c3" ViewId="District_ListView" Caption="Quận - Huyện" IsNewNode="True" />
           <Item Id="@57a05c70-30bd-41f3-8b68-1e921ce92286" ViewId="ContractType_ListView" Caption="Loại hợp đồng" IsNewNode="True" />
           <Item Id="@80d4bb9b-15da-4e21-97ea-57026d3028da" ViewId="Designation_ListView" IsNewNode="True" />
           <Item Id="@8323a475-e30b-4b9b-9481-f579acf8c29e" ViewId="Nation_ListView" IsNewNode="True" />
           <Item Id="@97f0a797-5e72-490e-bb65-267b6b4aa263" ViewId="Group_ListView" IsNewNode="True" />
+          <Item Id="@9b98efb1-d8df-4e8e-8dc1-0300a6e5adf4" ViewId="Religion_ListView" IsNewNode="True" />
           <Item Id="@ac84fad7-0127-4c03-a668-99cffdf49c8b" ViewId="School_ListView" Caption="Nơi đào tạo" IsNewNode="True" />
           <Item Id="@c73ff8c0-2368-4384-a5a0-758bd10c4cec" ViewId="Gender_ListView" IsNewNode="True" />
           <Item Id="@d8b2c754-7803-4594-8f06-28c62283a49e" ViewId="HealthInsuranceRegisterPlace_ListView" IsNewNode="True" />
@@ -223,6 +234,24 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="ContactImportParam_DetailView">
+      <Items>
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
+      </Items>
+    </DetailView>
+    <DetailView Id="DesignationImportParam_DetailView">
+      <Items>
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
+      </Items>
+    </DetailView>
+    <ListView Id="Employee_BankAccounts_ListView">
+      <Columns>
+        <ColumnInfo Id="Employee" Index="-1" SortIndex="0" SortOrder="Ascending" />
+        <ColumnInfo Id="BranchName" Index="0" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Bank" Index="1" />
+        <ColumnInfo Id="Account" Index="2" />
+      </Columns>
+    </ListView>
     <DetailView Id="Employee_DetailView" Caption="Thông tin nhân viên" RequiredFieldMark="(*)">
       <Items>
         <PropertyEditor Id="Avartar" PropertyEditorType="DevExpress.ExpressApp.Blazor.Editors.StringPropertyEditor" />
@@ -231,7 +260,7 @@
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="80.4635761589404">
             <LayoutGroup Id="Employee" RelativeSize="69.34156378600824" Caption="Thông tin chung">
-              <LayoutGroup Id="Employee_col1" RelativeSize="49.92412746585736">
+              <LayoutGroup Id="Employee_col1" RelativeSize="49.92435703479576">
                 <LayoutItem Id="AvartarData" ViewItem="AvartarData" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
                 <LayoutItem Id="Code" RelativeSize="7.894736842105263" Index="1" />
                 <LayoutItem Id="FullName" RelativeSize="7.894736842105263" Index="2" />
@@ -244,21 +273,23 @@
                 <LayoutItem Id="HasLeft" ViewItem="HasLeft" Index="8" RelativeSize="34.21052631578947" IsNewNode="True" />
                 <LayoutItem Id="Job" RelativeSize="28.571428571428573" Index="8" Removed="True" />
                 <LayoutItem Id="Religion" Index="8" RelativeSize="8.571428571428571" Removed="True" />
+                <LayoutItem Id="Identity" Index="9" RelativeSize="20" Removed="True" />
                 <LayoutItem Id="Nation" RelativeSize="11.428571428571429" Index="10" Removed="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Employee_col2" RelativeSize="50.07587253414264">
+              <LayoutGroup Id="Employee_col2" RelativeSize="50.07564296520424">
                 <LayoutItem Id="Designation" ViewItem="Designation" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
-                <LayoutItem Id="Job" ViewItem="Job" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Nation" ViewItem="Nation" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="3" />
-                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="4" />
-                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="5" />
-                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="6" />
-                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="7" />
-                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="8" />
+                <LayoutItem Id="Nation" ViewItem="Nation" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="Identity" ViewItem="Identity" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
+                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="3" />
+                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="4" />
+                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="5" />
+                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="6" />
+                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="7" />
+                <LayoutItem Id="Group" Index="8" RelativeSize="7.894736842105263" />
                 <LayoutItem Id="Major" RelativeSize="7.894736842105263" Index="9" />
                 <LayoutItem Id="Religion" ViewItem="Religion" Index="10" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="MaritalStatus" RelativeSize="10.526315789473685" Index="11" />
+                <LayoutItem Id="MaritalStatus" RelativeSize="10.526315789473685" Index="11" Removed="True" />
+                <LayoutItem Id="Status" Index="11" RelativeSize="10.526315789473685" />
                 <LayoutItem Id="AvartarData" RelativeSize="7.317073170731708" Removed="True" />
                 <LayoutItem Id="HasLeft" Removed="True" />
               </LayoutGroup>
@@ -292,18 +323,74 @@
             <LayoutGroup Id="BankAccounts" RelativeSize="100">
               <LayoutItem Id="BankAccounts" RelativeSize="100" />
             </LayoutGroup>
+            <LayoutGroup Id="EmployeeTransfers" RelativeSize="100">
+              <LayoutItem Id="EmployeeTransfers" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="EmplyeeUpgrades" RelativeSize="100">
+              <LayoutItem Id="EmplyeeUpgrades" RelativeSize="100" />
+            </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Employee_ListView" ShowFindPanel="True" Caption="Danh sách nhân viên">
+    <ListView Id="Employee_ListView" ShowFindPanel="True" Caption="Danh sách nhân viên" MasterDetailMode="ListViewAndDetailView">
       <Columns>
-        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Index="-1" Width="70" IsNewNode="True" Removed="True" />
-        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Index="-1" Width="70" IsNewNode="True" Removed="True" />
-        <ColumnInfo Id="DisplayName" PropertyName="DisplayName" Index="-1" Width="400" IsNewNode="True" Removed="True" />
-        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Width="70" IsNewNode="True" Removed="True" />
-        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Index="-1" Width="70" IsNewNode="True" Removed="True" />
-        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Index="-1" Width="70" Removed="True" />
+        <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Index="-1" Width="70" Removed="True" />
+        <ColumnInfo Id="DisplayName" PropertyName="DisplayName" Index="-1" Width="400" Removed="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Width="70" Removed="True" />
+        <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Index="-1" Width="70" Removed="True" />
+        <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" Removed="True" />
+        <ColumnInfo Id="Code" Width="84" />
+        <ColumnInfo Id="FullName" Width="67" MaxLength="300" />
+        <ColumnInfo Id="Gender" Width="58" />
+        <ColumnInfo Id="DateOfBirth" Width="67" />
+        <ColumnInfo Id="DateOfJoining" Width="85" />
+        <ColumnInfo Id="TaxCode" Width="73" />
+        <ColumnInfo Id="Department" Width="0" />
+        <ColumnInfo Id="Designation" Width="74" />
+        <ColumnInfo Id="Nation" Width="57" />
+        <ColumnInfo Id="HasLeft" Width="63" />
+        <ColumnInfo Id="Group" Width="47" />
+        <ColumnInfo Id="Status" Width="69" />
+        <ColumnInfo Id="Avartar" Removed="True" />
+        <ColumnInfo Id="AvartarData" Removed="True" />
+        <ColumnInfo Id="EducationLevel" Removed="True" />
+        <ColumnInfo Id="Identity" Removed="True" />
+        <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
+        <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
+        <ColumnInfo Id="Job" Width="100" Removed="True" />
+        <ColumnInfo Id="Major" Removed="True" />
+        <ColumnInfo Id="MaritalStatus" Removed="True" />
+        <ColumnInfo Id="Religion" Removed="True" />
+        <ColumnInfo Id="School" Removed="True" />
+        <ColumnInfo Id="Social" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="EmployeeBankAccount_ListView" IsGroupPanelVisible="False" GroupSummary="Empty" AutoExpandAllGroups="True" ShowAutoFilterRow="False">
+      <Columns>
+        <ColumnInfo Id="EmployeeCode" PropertyName="Employee.Code" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Employee" Index="1" SortOrder="Ascending" GroupIndex="-1" Width="81" LookupProperty="FullName" SortIndex="0" PropertyName="Employee.FullName" />
+        <ColumnInfo Id="Bank" Index="2" Width="85" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Account" Index="3" Width="79" />
+        <ColumnInfo Id="BranchName" Index="4" Width="81" SortIndex="-1" SortOrder="None" />
+      </Columns>
+    </ListView>
+    <DetailView Id="EmployeeBankAccountImportParam_DetailView">
+      <Items>
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
+      </Items>
+    </DetailView>
+    <ListView Id="EmployeeContact_ListView">
+      <Columns>
+        <ColumnInfo Id="EmployeeCode" PropertyName="Employee.Code" Index="0" Width="93" IsNewNode="True" />
+        <ColumnInfo Id="Employee" Index="1" SortIndex="0" SortOrder="Ascending" PropertyName="Employee.FullName" Width="111" />
+        <ColumnInfo Id="PersonalPhone" SortIndex="-1" SortOrder="None" Index="2" Width="110" />
+        <ColumnInfo Id="PersonalEmail" Index="3" Width="85" />
+        <ColumnInfo Id="CompanyPhone" Index="4" Width="108" />
+        <ColumnInfo Id="CompanyEmail" Index="5" Width="87" />
+        <ColumnInfo Id="OriginAddress" Index="6" Width="85" />
+        <ColumnInfo Id="TemporaryAddress" Index="7" Width="109" />
       </Columns>
     </ListView>
     <DetailView Id="EmployeeContract_DetailView">
@@ -349,18 +436,23 @@
     </DetailView>
     <DetailView Id="EmployeeImportParam_DetailView" DefaultFocusedItem="">
       <Items>
-        <ActionContainerViewItem Id="Template" ActionContainer="Unspecified" Caption="Template(7)" IsNewNode="True" />
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="EmployeeImportParam" RelativeSize="100" Caption="Chọn file">
-              <LayoutItem Id="Template" ViewItem="Template" Index="0" RelativeSize="6.500956022944551" IsNewNode="True" />
-              <LayoutItem Id="FileImport" Index="1" RelativeSize="93.49904397705545" />
+            <LayoutGroup Id="EmployeeImportParam" RelativeSize="100" Caption="Chọn file" Direction="Vertical">
+              <LayoutItem Id="Template" Index="0" RelativeSize="6.336633663366337" ViewItem="Template" IsNewNode="True" />
+              <LayoutItem Id="FileImport" Index="1" RelativeSize="93.66336633663366" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
+    </DetailView>
+    <DetailView Id="HIRPImportParam_DetailView">
+      <Items>
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
+      </Items>
     </DetailView>
     <DetailView Id="LeftReasonType_DetailView">
       <Layout>

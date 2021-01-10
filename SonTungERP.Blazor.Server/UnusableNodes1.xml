@@ -14,5 +14,18 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="Employee_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Employee">
+              <LayoutGroup Id="Employee_col2">
+                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="3" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>

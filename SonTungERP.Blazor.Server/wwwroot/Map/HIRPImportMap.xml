@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sheet name="BenhVien">
+  <Column propertyName="Code" excelHeader="Mã bv"/>
+  <Column propertyName="Name" excelHeader="Tên bệnh viện"/>
+  <Column propertyName="Province" excelHeader="Mã tỉnh"/>
+</Sheet>

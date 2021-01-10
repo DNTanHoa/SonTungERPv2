@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using DevExpress.Blazor
+@using SonTungERP.Module.Blazor.Editors.ComponentModel
+
+<style>
+    a:hover {
+        text-decoration:none;
+        cursor:pointer;
+    }
+</style>
+
+<span>
+    <a href="@ComponentModel.Value?.Url" 
+       class="text-primary text-bold"
+       download="EmployeeImportTemplate.xlsx"
+       target="_top"
+       style="font-weight:bold">@ComponentModel.Value?.DisplayName</a>
+</span>
+
+@code {
+    [Parameter]
+    public LinkInputModel ComponentModel { get; set; }
+
+    public static RenderFragment Create(LinkInputModel componentModel) =>
+    @<LinkEditor ComponentModel=@componentModel />;
+}

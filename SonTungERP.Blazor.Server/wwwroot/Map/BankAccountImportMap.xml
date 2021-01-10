@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sheet name="Ngân hàng">
+  <Column propertyName="Code" excelHeader="Mã nhân viên"/>
+  <Column propertyName="Bank" excelHeader="Ngân hàng"/>
+  <Column propertyName="Account" excelHeader="Số tài khoản"/>
+  <Column propertyName="BranchName" excelHeader="Chi nhánh"/>
+</Sheet>

@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using ExcelDataReader;
 using SonTungERP.Module.BusinessObjects;
 using SonTungERP.Module.Imports;
@@ -125,6 +126,8 @@ namespace SonTungERP.Module.Controllers.Process
             var maritalStatuses = objectSpace.GetObjects<MaritalStatus>();
             var schools = objectSpace.GetObjects<School>();
             var employeeStatuses = objectSpace.GetObjects<EmployeeStatus>();
+            var identityLicensePlaces = objectSpace.GetObjects<IdentiyLicesenPlace>();
+            var educationLevels = objectSpace.GetObjects<EducationLevel>();
 
             if (!string.IsNullOrEmpty(rowData["DepartmentCode"]?.ToString()))
             {
@@ -152,12 +155,12 @@ namespace SonTungERP.Module.Controllers.Process
                 result.SetMemberValue("Group", result?.Department?.Group);
             }
 
-            if (!string.IsNullOrEmpty(rowData["Job"]?.ToString()))
-            {
-                var job = jobs
-                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Job"]?.ToString().ToUpper());
-                result.SetMemberValue("Job", job);
-            }
+            //if (!string.IsNullOrEmpty(rowData["Job"]?.ToString()))
+            //{
+            //    var job = jobs
+            //        .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Job"]?.ToString().ToUpper());
+            //    result.SetMemberValue("Job", job);
+            //}
 
             if (!string.IsNullOrEmpty(rowData["Designation"]?.ToString()))
             {
@@ -180,12 +183,12 @@ namespace SonTungERP.Module.Controllers.Process
                 result.SetMemberValue("Gender", gender);
             }
 
-            if (!string.IsNullOrEmpty(rowData["Nationality"]?.ToString()))
-            {
-                var nationality = nationalities
-                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Nationality"]?.ToString());
-                result.SetMemberValue("Nationality", nationality);
-            }
+            //if (!string.IsNullOrEmpty(rowData["Nationality"]?.ToString()))
+            //{
+            //    var nationality = nationalities
+            //        .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Nationality"]?.ToString());
+            //    result.SetMemberValue("Nationality", nationality);
+            //}
 
             if (!string.IsNullOrEmpty(rowData["Religion"]?.ToString()))
             {
@@ -194,18 +197,25 @@ namespace SonTungERP.Module.Controllers.Process
                 result.SetMemberValue("Religion", religion);
             }
 
-            if (!string.IsNullOrEmpty(rowData["MaritalStatus"]?.ToString()))
-            {
-                var maritalStatus = maritalStatuses
-                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["MaritalStatus"]?.ToString().ToUpper());
-                result.SetMemberValue("MaritalStatus", maritalStatus);
-            }
-
-            if (!string.IsNullOrEmpty(rowData["EmployeeStatus"]?.ToString()))
+            if (!string.IsNullOrEmpty(rowData["Status"]?.ToString()))
             {
                 var employeeStatus = employeeStatuses
-                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["EmployeeStatus"]?.ToString().ToUpper());
-                result.SetMemberValue("MaritalStatus", employeeStatus);
+                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Status"]?.ToString().ToUpper());
+                result.SetMemberValue("Status", employeeStatus);
+            }
+
+            if (!string.IsNullOrEmpty(rowData["IdentiyLicesenPlace"]?.ToString()))
+            {
+                var identityLicensePlace = identityLicensePlaces
+                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["IdentiyLicesenPlace"]?.ToString().ToUpper());
+                result.SetMemberValue("IdentiyLicesenPlace", identityLicensePlace);
+            }
+
+            if (!string.IsNullOrEmpty(rowData["EducationLevel"]?.ToString()))
+            {
+                var educationLevel = educationLevels
+                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["EducationLevel"]?.ToString().ToUpper());
+                result.SetMemberValue("EducationLevel", educationLevel);
             }
 
         }
@@ -475,8 +485,8 @@ namespace SonTungERP.Module.Controllers.Process
                 if (existGroup != null)
                 {
                     var department = objectSpace.CreateObject<Department>();
-                    department.SetMemberValue("Code", row["Code"]);
-                    department.SetMemberValue("Name", row["Name"]);
+                    department.SetMemberValue("Code", row["Code"]?.ToString());
+                    department.SetMemberValue("Name", row["Name"]?.ToString());
                     department.SetMemberValue("Group", existGroup);
                     mapResult.Add(department);
                 }
@@ -652,6 +662,249 @@ namespace SonTungERP.Module.Controllers.Process
                 designation.SetMemberValue("Name", row["Name"]);
                 designation.SetMemberValue("Code", row["Code"]);
                 mapResult.Add(designation);
+            }
+        }
+
+        public static void process_read_health_insurrance_register_place_data(
+            IObjectSpace objectSpace,
+            string fileSavePath,
+            string configFilePath)
+        {
+            using (var stream = File.Open(fileSavePath, FileMode.Open, FileAccess.Read))
+            {
+                using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                {
+
+                    var dataSet = reader.AsDataSet(new ExcelDataSetConfiguration
+                    {
+                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+
+                    if (dataSet.Tables.Count > 0)
+                    {
+                        SheetTemplateImport templateImport = new SheetTemplateImport(configFilePath);
+
+                        DataTable table = dataSet.Tables[templateImport.SheetName];
+
+                        foreach (var column in templateImport.Columns)
+                        {
+                            if (!string.IsNullOrWhiteSpace(column.excelHeader))
+                            {
+                                table.Columns[column.excelHeader].ColumnName = column.propertyName;
+                            }
+                        }
+
+                        ///Map data from excel to bussiness object
+                        process_map_health_insurrance_register_place_data(
+                            objectSpace,
+                            table,
+                            out List<HealthInsuranceRegisterPlace> mapResult);
+                    }
+                }
+            }
+        }
+        
+        public static void process_map_health_insurrance_register_place_data(
+            IObjectSpace objectSpace,
+            DataTable healthInsurranceRegisterPlaceDataTable,
+            out List<HealthInsuranceRegisterPlace> mapResult)
+        {
+            var provinces = objectSpace.GetObjects<Province>();
+
+            string provinceCode = string.Empty;
+            Province province = null;
+
+            mapResult = new List<HealthInsuranceRegisterPlace>();
+
+            foreach (DataRow row in healthInsurranceRegisterPlaceDataTable.Rows)
+            {
+                if (provinceCode != row["Province"]?.ToString())
+                {
+                    provinceCode = row["Province"]?.ToString();
+                    province = provinces
+                        .Where(item => item.Code == provinceCode)
+                        .FirstOrDefault();
+                }
+
+                if (province != null)
+                {
+                    HealthInsuranceRegisterPlace healthInsuranceRegisterPlace =
+                        objectSpace.CreateObject<HealthInsuranceRegisterPlace>();
+
+                    healthInsuranceRegisterPlace.SetMemberValue("Name", row["Name"]?.ToString());
+                    healthInsuranceRegisterPlace.SetMemberValue("Code", row["Code"]?.ToString());
+                    healthInsuranceRegisterPlace.SetMemberValue("Province", province);
+
+                    mapResult.Add(healthInsuranceRegisterPlace);
+                }
+            }
+        }
+
+        public static void process_read_employee_contact_data(
+            IObjectSpace objectSpace,
+            string fileSavePath,
+            string configFilePath)
+        {
+            using (var stream = File.Open(fileSavePath, FileMode.Open, FileAccess.Read))
+            {
+                using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                {
+
+                    var dataSet = reader.AsDataSet(new ExcelDataSetConfiguration
+                    {
+                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+
+                    if (dataSet.Tables.Count > 0)
+                    {
+                        SheetTemplateImport templateImport = new SheetTemplateImport(configFilePath);
+
+                        DataTable table = dataSet.Tables[templateImport.SheetName];
+
+                        foreach (var column in templateImport.Columns)
+                        {
+                            if (!string.IsNullOrWhiteSpace(column.excelHeader))
+                            {
+                                table.Columns[column.excelHeader].ColumnName = column.propertyName;
+                            }
+                        }
+
+                        processs_map_employee_contact_data(
+                            objectSpace,
+                            table,
+                            out List<EmployeeContact> mapResult);
+                    }
+                }
+            }
+        }
+
+        public static void processs_map_employee_contact_data(
+            IObjectSpace objectSpace,
+            DataTable employeeContactDataTable,
+            out List<EmployeeContact> mapResult)
+        {
+            mapResult = new List<EmployeeContact>();
+            var employees = objectSpace.GetObjects<Employee>(
+                CriteriaOperator.Parse("[HasLeft] = ?", false));
+
+            Employee employee = null;
+            string EmpID = string.Empty;
+
+            foreach (DataRow row in employeeContactDataTable.Rows)
+            {
+                if(EmpID != row["Code"]?.ToString())
+                {
+                    EmpID = row["Code"]?.ToString();
+                    employee = employees
+                        .FirstOrDefault(item => item.Code == EmpID);
+                }   
+                
+                if(employee != null)
+                {
+                    var contact = objectSpace.CreateObject<EmployeeContact>();
+
+                    contact.SetMemberValue("Employee", employee);
+                    contact.SetMemberValue("PersonalPhone",row["PersonalPhone"]?.ToString());
+                    contact.SetMemberValue("PersonalEmail", row["PersonalEmail"]?.ToString());
+                    contact.SetMemberValue("CompanyPhone", row["CompanyPhone"]?.ToString());
+                    contact.SetMemberValue("CompanyEmail", row["CompanyEmail"]?.ToString());
+                    contact.SetMemberValue("OriginAddress", row["OriginAddress"]?.ToString());
+                    contact.SetMemberValue("TemporaryAddress", row["TemporaryAddress"]?.ToString());
+
+                    mapResult.Add(contact);
+                }    
+            }    
+        }
+
+        public static void process_read_employee_bank_account_data(
+            IObjectSpace objectSpace,
+            string fileSavePath,
+            string configFilePath)
+        {
+            using (var stream = File.Open(fileSavePath, FileMode.Open, FileAccess.Read))
+            {
+                using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                {
+
+                    var dataSet = reader.AsDataSet(new ExcelDataSetConfiguration
+                    {
+                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+
+                    if (dataSet.Tables.Count > 0)
+                    {
+                        SheetTemplateImport templateImport = new SheetTemplateImport(configFilePath);
+
+                        DataTable table = dataSet.Tables[templateImport.SheetName];
+
+                        foreach (var column in templateImport.Columns)
+                        {
+                            if (!string.IsNullOrWhiteSpace(column.excelHeader))
+                            {
+                                table.Columns[column.excelHeader].ColumnName = column.propertyName;
+                            }
+                        }
+
+                        processs_map_employee_bank_account_data(
+                            objectSpace,
+                            table,
+                            out List<EmployeeBankAccount> mapResult);
+                    }
+                }
+            }
+        }
+
+        public static void processs_map_employee_bank_account_data(
+            IObjectSpace objectSpace,
+            DataTable employeeBankAcountDataTable,
+            out List<EmployeeBankAccount> mapResult)
+        {
+            mapResult = new List<EmployeeBankAccount>();
+            var employees = objectSpace.GetObjects<Employee>(
+                CriteriaOperator.Parse("[HasLeft] = ?", false));
+            var banks = objectSpace.GetObjects<Bank>();
+
+            Employee employee = null;
+            Bank bank = null;
+            string EmpID = string.Empty;
+            string bankName = string.Empty;
+
+            foreach (DataRow row in employeeBankAcountDataTable.Rows)
+            {
+                if (EmpID != row["Code"]?.ToString())
+                {
+                    EmpID = row["Code"]?.ToString();
+                    employee = employees
+                        .FirstOrDefault(item => item.Code == EmpID);
+                }
+
+                if (bankName != row["Bank"]?.ToString())
+                {
+                    bankName = row["Bank"]?.ToString();
+                    bank = banks
+                        .FirstOrDefault(item => item.Name.ToUpper() == bankName.ToUpper());
+                }
+
+                if (employee != null && bank != null)
+                {
+                    var account = objectSpace.CreateObject<EmployeeBankAccount>();
+
+                    account.SetMemberValue("Employee", employee);
+                    account.SetMemberValue("Bank", bank);
+                    account.SetMemberValue("Account", row["Account"]?.ToString());
+                    account.SetMemberValue("BranchName", row["BranchName"]?.ToString());
+
+                    mapResult.Add(account);
+                }
             }
         }
     }

@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
   <Views Id="Views">
-    <DetailView Id="Employee_DetailView">
-      <Layout Id="Layout">
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="Employee">
-              <LayoutGroup Id="Employee_col2">
-                <LayoutItem Id="Avartar" RelativeSize="9.16030534351145" Removed="True" />
-              </LayoutGroup>
-            </LayoutGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
     <DetailView Id="AuthenticationStandardLogonParameters_Blazor_DetailView">
       <Layout Id="Layout">
         <LayoutGroup Id="Main">

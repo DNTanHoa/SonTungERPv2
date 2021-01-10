@@ -9,10 +9,7 @@ using DevExpress.ExpressApp.SystemModule;
 using DevExpress.ExpressApp.Templates;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
-using DevExpress.Xpo;
-using Microsoft.AspNetCore.Http;
 using SonTungERP.Module.BusinessObjects;
 using SonTungERP.Module.Controllers.Process;
 using SonTungERP.Module.DomainComponent;
@@ -25,58 +22,55 @@ using System.Text;
 namespace SonTungERP.Module.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class ImportEmployee_ViewController : ViewController
+    public partial class ImportDesignation_ViewController : ViewController
     {
-        EmployeeImportParam importParam { get; set; }
-        public ImportEmployee_ViewController()
+        DesignationImportParam importParam { get; set; }
+        public ImportDesignation_ViewController()
         {
             InitializeComponent();
-
-            // Target required Views (via the TargetXXX properties) and create their Actions.
-            PopupWindowShowAction importEmployeeAction = new PopupWindowShowAction(this, 
-                "ImportEmployeeAction", PredefinedCategory.View)
+            PopupWindowShowAction importEmployeeAction = new PopupWindowShowAction(this,
+                "ImportDesignationAction", PredefinedCategory.View)
             {
                 Caption = "Import",
-                TargetObjectType = typeof(Employee),
+                TargetObjectType = typeof(Designation),
                 TargetViewType = ViewType.ListView
             };
-            importEmployeeAction.Execute += ImportEmployeeAction_Execute;
-            importEmployeeAction.CustomizePopupWindowParams += ImportEmployeeAction_CustomParam;
+            importEmployeeAction.Execute += ImportDesignationAction_Execute;
+            importEmployeeAction.CustomizePopupWindowParams += ImportDesignationAction_CustomParam;
         }
 
-        private void ImportEmployeeAction_CustomParam(object sender, CustomizePopupWindowParamsEventArgs e)
-        {
-            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(EmployeeImportParam));
-            importParam = new EmployeeImportParam();
-            importParam.Template = new DownloadTemplate()
-            {
-                DisplayName = "Download",
-                Url = "Templates/EmployeeCollection.xlsx"
-            };
-            var detailView = Application.CreateDetailView(objectSpace, importParam);
-            detailView.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
-            e.View = detailView;
-        }
-
-        private void ImportEmployeeAction_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
+        private void ImportDesignationAction_Execute(object sender, PopupWindowShowActionExecuteEventArgs e)
         {
             var fileData = importParam.FileImport;
-            var savePath = "wwwroot\\Upload\\ImportEmployee"
+            var savePath = "wwwroot\\Upload\\ImportDesignation"
                        + DateTime.Now.ToString("ddMMyyyyHHmmsstt")
                        + ".xlsx";
 
             fileData.SaveToPath(savePath);
 
-            var configFilePath = "wwwroot\\Map\\EmployeeImportMap.xml";
+            var configFilePath = "wwwroot\\Map\\DesignationImportMap.xml";
 
-            ProcessImportLib.process_read_employee_data(
+            ProcessImportLib.process_read_designation_data(
                 this.ObjectSpace,
                 savePath,
-                configFilePath,
-                out List<Employee> employee);
+                configFilePath);
             ObjectSpace.CommitChanges();
             ObjectSpace.Refresh();
             View.Refresh();
+        }
+
+        private void ImportDesignationAction_CustomParam(object sender, CustomizePopupWindowParamsEventArgs e)
+        {
+            IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(DepartmentImportParam));
+            importParam = new DesignationImportParam();
+            importParam.Template = new DownloadTemplate()
+            {
+                DisplayName = "Download",
+                Url = "Templates/DesignationCollection.xlsx"
+            };
+            var detailView = Application.CreateDetailView(objectSpace, importParam);
+            detailView.ViewEditMode = DevExpress.ExpressApp.Editors.ViewEditMode.Edit;
+            e.View = detailView;
         }
 
         protected override void OnActivated()
@@ -97,9 +91,9 @@ namespace SonTungERP.Module.Controllers
     }
 
     [DomainComponent]
-    [XafDisplayName("Import nhân viên")]
+    [XafDisplayName("Import bộ phận")]
     [FileAttachmentAttribute("FileImport")]
-    public class EmployeeImportParam
+    public class DesignationImportParam
     {
         [XafDisplayName("Tải biểu mẫu")]
         public DownloadTemplate Template { get; set; }
