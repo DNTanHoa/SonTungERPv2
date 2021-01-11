@@ -28,7 +28,7 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        [XafDisplayName("Chức danh")]
+        [XafDisplayName("Chức vụ")]
         public string Name
         {
             get => name;
@@ -38,6 +38,6 @@ namespace SonTungERP.Module.BusinessObjects
         [NonPersistent]
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
-        public string DisplayName => this.Code + "-" + this.Name;
+        public string DisplayName => this.Name;
     }
 }

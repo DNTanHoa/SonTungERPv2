@@ -41,6 +41,11 @@
         <Member Name="UserName" Caption="Tên đăng nhập" />
       </OwnMembers>
     </Class>
+    <Class Name="SonTungERP.Module.BusinessObjects.Candidate">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
     <Class Name="SonTungERP.Module.BusinessObjects.Employee">
       <OwnMembers>
         <Member Name="HasLeft" AllowEdit="False" />
@@ -124,12 +129,15 @@
           <Item Id="@241d1dbf-c9bf-46c0-a54e-6c367c87ba8a" ViewId="IdentiyLicesenPlace_ListView" IsNewNode="True" />
           <Item Id="@45bcd94d-abd8-42ab-8d6e-a8e75e6969c3" ViewId="District_ListView" Caption="Quận - Huyện" IsNewNode="True" />
           <Item Id="@57a05c70-30bd-41f3-8b68-1e921ce92286" ViewId="ContractType_ListView" Caption="Loại hợp đồng" IsNewNode="True" />
-          <Item Id="@80d4bb9b-15da-4e21-97ea-57026d3028da" ViewId="Designation_ListView" IsNewNode="True" />
+          <Item Id="@59fe678b-dbbd-4b14-a853-b5b29e1fb586" ViewId="Skill_ListView" IsNewNode="True" />
+          <Item Id="@80d4bb9b-15da-4e21-97ea-57026d3028da" ViewId="Designation_ListView" Caption="Chức vụ" IsNewNode="True" />
           <Item Id="@8323a475-e30b-4b9b-9481-f579acf8c29e" ViewId="Nation_ListView" IsNewNode="True" />
           <Item Id="@97f0a797-5e72-490e-bb65-267b6b4aa263" ViewId="Group_ListView" IsNewNode="True" />
           <Item Id="@9b98efb1-d8df-4e8e-8dc1-0300a6e5adf4" ViewId="Religion_ListView" IsNewNode="True" />
           <Item Id="@ac84fad7-0127-4c03-a668-99cffdf49c8b" ViewId="School_ListView" Caption="Nơi đào tạo" IsNewNode="True" />
+          <Item Id="@b3949854-719d-44c7-9649-f7ef328299d4" ViewId="Job_ListView" Caption="Chức danh" IsNewNode="True" />
           <Item Id="@c73ff8c0-2368-4384-a5a0-758bd10c4cec" ViewId="Gender_ListView" IsNewNode="True" />
+          <Item Id="@d7181f04-e760-48d5-910f-5e947dfe8692" ViewId="SkillLevel_ListView" IsNewNode="True" />
           <Item Id="@d8b2c754-7803-4594-8f06-28c62283a49e" ViewId="HealthInsuranceRegisterPlace_ListView" IsNewNode="True" />
           <Item Id="@e2af8c8b-3689-4826-ba43-b644db55e681" ViewId="Ward_ListView" Caption="Xã - Phường" IsNewNode="True" />
           <Item Id="@edfe1bb4-9466-4c81-8011-0c8eaf7696df" ViewId="EmployeeStatus_ListView" IsNewNode="True" />
@@ -213,6 +221,237 @@
                 <LayoutItem Id="UserName" Index="0" RelativeSize="5.378151260504202" />
                 <LayoutItem Id="Password" Index="1" RelativeSize="94.6218487394958" />
               </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Candidate_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="71.53153153153153" IsNewNode="True">
+              <LayoutGroup Id="Candidate" ShowCaption="True" Caption="Thông tin ứng viên" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Candidate_col1" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
+                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                  <LayoutItem Id="FullName" ViewItem="FullName" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Gender" ViewItem="Gender" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Phone" ViewItem="Phone" Index="3" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Email" ViewItem="Email" Index="4" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="OriginAddress" ViewItem="OriginAddress" Index="5" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="TemporaryAddress" ViewItem="TemporaryAddress" Index="6" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Identity" ViewItem="Identity" Index="7" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="IdentiyLicesenPlace" ViewItem="IdentiyLicesenPlace" Index="8" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="IdetityLicesenDate" ViewItem="IdetityLicesenDate" Index="9" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Education" ViewItem="Education" Index="10" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Major" ViewItem="Major" Index="11" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="School" ViewItem="School" Index="12" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Employee" ViewItem="Employee" Index="13" RelativeSize="10.614525139664805" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Candidate_col2" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
+                  <LayoutItem Id="EmployeeCode" ViewItem="EmployeeCode" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                  <LayoutItem Id="MaritalStatus" ViewItem="MaritalStatus" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="FileSavePath" ViewItem="FileSavePath" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Quality" ViewItem="Quality" Index="3" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Strength" ViewItem="Strength" Index="4" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Weakness" ViewItem="Weakness" Index="5" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Personalities" ViewItem="Personalities" Index="6" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Gifted" ViewItem="Gifted" Index="7" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="Interests" ViewItem="Interests" Index="8" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="ProbationarySalary" ViewItem="ProbationarySalary" Index="9" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="OfficalSalary" ViewItem="OfficalSalary" Index="10" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="DesiredSalary" ViewItem="DesiredSalary" Index="11" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="WillJoinDate" ViewItem="WillJoinDate" Index="12" RelativeSize="6.70391061452514" IsNewNode="True" />
+                  <LayoutItem Id="DesiredContractType" ViewItem="DesiredContractType" Index="13" RelativeSize="10.614525139664805" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Quan hệ gia đình" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Relatives" ViewItem="Relatives" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" Caption="Kinh nghiệm" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Experiences" ViewItem="Experiences" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" Caption="Chuyên môn" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Educations" ViewItem="Educations" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="4" Caption="Kỹ năng" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Skills" ViewItem="Skills" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="28.46846846846847" Index="1">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="26.89075630252101" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="20.168067226890756" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="20.168067226890756" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="32.773109243697476" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="CreateDate" RelativeSize="22.22222222222222" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="22.22222222222222" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Candidate" Caption="Thông tin ứng viên" RelativeSize="72.09737827715355" Removed="True">
+              <LayoutGroup Id="Candidate_col1" RelativeSize="50">
+                <LayoutItem Id="Code" RelativeSize="9.090909090909092" />
+                <LayoutItem Id="Education" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Email" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Employee" RelativeSize="9.090909090909092" />
+                <LayoutItem Id="FullName" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Gender" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Identity" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="IdetityLicesenDate" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Major" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="OriginAddress" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Phone" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="School" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="TemporaryAddress" RelativeSize="6.818181818181818" />
+              </LayoutGroup>
+              <LayoutGroup Id="Candidate_col2" RelativeSize="50">
+                <LayoutItem Id="DesiredContractType" RelativeSize="9.090909090909092" />
+                <LayoutItem Id="DesiredSalary" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="EmployeeCode" RelativeSize="9.090909090909092" />
+                <LayoutItem Id="FileSavePath" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Gifted" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Interests" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="MaritalStatus" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="OfficalSalary" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Personalities" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="ProbationarySalary" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Quality" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Strength" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="Weakness" RelativeSize="6.818181818181818" />
+                <LayoutItem Id="WillJoinDate" RelativeSize="6.818181818181818" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="17.933130699088146" Removed="True">
+            <LayoutGroup Id="Experiences" RelativeSize="0" Caption="Kinh nghiệm" Direction="Horizontal">
+              <LayoutItem Id="Experiences" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Relatives" RelativeSize="0" Caption="Quan hệ gia đình" Direction="Horizontal">
+              <LayoutItem Id="Relatives" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Candidate_ListView">
+      <Columns>
+        <ColumnInfo Id="Code" Index="0" />
+        <ColumnInfo Id="FullName" Index="1" />
+        <ColumnInfo Id="CreateDate" Removed="True" />
+        <ColumnInfo Id="CreateUser" Removed="True" />
+        <ColumnInfo Id="Education" Removed="True" />
+        <ColumnInfo Id="Employee" Removed="True" />
+        <ColumnInfo Id="EmployeeCode" Removed="True" />
+        <ColumnInfo Id="FileSavePath" Removed="True" />
+        <ColumnInfo Id="Gifted" Removed="True" />
+        <ColumnInfo Id="Identity" Removed="True" />
+        <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
+        <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
+        <ColumnInfo Id="Interests" Removed="True" />
+        <ColumnInfo Id="Major" Removed="True" />
+        <ColumnInfo Id="MaritalStatus" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="OriginAddress" Removed="True" />
+        <ColumnInfo Id="Personalities" Removed="True" />
+        <ColumnInfo Id="Quality" Removed="True" />
+        <ColumnInfo Id="School" Removed="True" />
+        <ColumnInfo Id="Strength" Removed="True" />
+        <ColumnInfo Id="TemporaryAddress" Removed="True" />
+        <ColumnInfo Id="UpdateDate" Removed="True" />
+        <ColumnInfo Id="UpdateUser" Removed="True" />
+        <ColumnInfo Id="Weakness" Removed="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CandidateExperience_DetailView">
+      <Items>
+        <PropertyEditor Id="CompanyAddress" RowCount="1" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="38.08630393996248">
+            <LayoutGroup Id="CandidateExperience" Caption="Kinh nghiệm" RelativeSize="100">
+              <LayoutGroup Id="CandidateExperience_col1" RelativeSize="49.926144756277694">
+                <LayoutItem Id="Candidate" RelativeSize="19.161676646706585" />
+                <LayoutItem Id="Time" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="Company" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="CompanySize" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="CompanyBussiness" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="Designation" RelativeSize="23.353293413173652" />
+              </LayoutGroup>
+              <LayoutGroup Id="CandidateExperience_col2" RelativeSize="50.073855243722306">
+                <LayoutItem Id="Salary" RelativeSize="19.161676646706585" />
+                <LayoutItem Id="ReasonOfLeave" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="Contact" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="ContactPhone" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="ContactDesignation" RelativeSize="14.37125748502994" />
+                <LayoutItem Id="ContactMobile" RelativeSize="23.353293413173652" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="35.880398671096344" Removed="True">
+              <LayoutItem Id="CreateDate" RelativeSize="22.22222222222222" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="22.22222222222222" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="61.91369606003752">
+            <LayoutItem Id="CompanyAddress" RelativeSize="50" CaptionLocation="Top" />
+            <LayoutItem Id="JobDescription" RelativeSize="50" CaptionLocation="Top" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CandidateRelative_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="CandidateRelative" Caption="Quan hệ ứng viên" RelativeSize="31.70731707317073">
+              <LayoutGroup Id="CandidateRelative_col1" RelativeSize="49.926144756277694">
+                <LayoutItem Id="Candidate" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Type" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="FullName" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="OriginAddress" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="TemporaryAddress" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+              <LayoutGroup Id="CandidateRelative_col2" RelativeSize="50.073855243722306">
+                <LayoutItem Id="Phone" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Email" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="DateOfBirth" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Job" RelativeSize="41.1764705882353" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="68.29268292682927">
+              <LayoutItem Id="CreateDate" RelativeSize="6.593406593406593" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="8.241758241758241" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="78.57142857142857" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="6.593406593406593" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CandidateSkill_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="CandidateSkill" RelativeSize="25.140712945590995">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Kỹ năng" IsNewNode="True">
+                <LayoutItem Id="Candidate" ViewItem="Candidate" Index="0" RelativeSize="33.68421052631579" IsNewNode="True" />
+                <LayoutItem Id="Skill" ViewItem="Skill" Index="1" RelativeSize="25.263157894736842" IsNewNode="True" />
+                <LayoutItem Id="Level" ViewItem="Level" Index="2" RelativeSize="41.05263157894737" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Candidate" RelativeSize="37.2093023255814" Removed="True" />
+              <LayoutItem Id="Level" RelativeSize="34.883720930232556" Removed="True" />
+              <LayoutItem Id="Skill" RelativeSize="27.906976744186046" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="74.85928705440901">
+              <LayoutItem Id="CreateDate" Removed="True" />
+              <LayoutItem Id="CreateUser" Removed="True" />
+              <LayoutItem Id="UpdateDate" Removed="True" />
+              <LayoutItem Id="UpdateUser" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
@@ -582,7 +821,75 @@
         <ColumnInfo Id="Oid" Removed="True" />
       </Columns>
     </ListView>
-    <DetailView Id="RecruitmentPlan_DetailView" ImageName="BO_Appearance" />
+    <ListView Id="RecruitmentPlan_candidates_ListView">
+      <Columns>
+        <ColumnInfo Id="Code" Index="0" />
+        <ColumnInfo Id="FullName" Index="1" />
+        <ColumnInfo Id="CreateDate" Removed="True" />
+        <ColumnInfo Id="CreateUser" Removed="True" />
+        <ColumnInfo Id="Education" Removed="True" />
+        <ColumnInfo Id="Employee" Removed="True" />
+        <ColumnInfo Id="EmployeeCode" Removed="True" />
+        <ColumnInfo Id="FileSavePath" Removed="True" />
+        <ColumnInfo Id="Gifted" Removed="True" />
+        <ColumnInfo Id="Identity" Removed="True" />
+        <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
+        <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
+        <ColumnInfo Id="Interests" Removed="True" />
+        <ColumnInfo Id="Major" Removed="True" />
+        <ColumnInfo Id="MaritalStatus" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="OriginAddress" Removed="True" />
+        <ColumnInfo Id="Personalities" Removed="True" />
+        <ColumnInfo Id="Quality" Removed="True" />
+        <ColumnInfo Id="RecruitmentPlan" Removed="True" />
+        <ColumnInfo Id="School" Removed="True" />
+        <ColumnInfo Id="Strength" Removed="True" />
+        <ColumnInfo Id="TemporaryAddress" Removed="True" />
+        <ColumnInfo Id="UpdateDate" Removed="True" />
+        <ColumnInfo Id="UpdateUser" Removed="True" />
+        <ColumnInfo Id="Weakness" Removed="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RecruitmentPlan_DetailView" ImageName="BO_Appearance">
+      <Items>
+        <PropertyEditor Id="Job" Caption="Chức danh" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="32.270168855534706" Direction="Vertical">
+            <LayoutGroup Id="RecruitmentPlan" Caption="Kế hoạch tuyển dụng" RelativeSize="100">
+              <LayoutGroup Id="RecruitmentPlan_col1" RelativeSize="48.15361890694239">
+                <LayoutItem Id="Title" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Job" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Designation" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="FromDate" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="ToDate" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+              <LayoutGroup Id="RecruitmentPlan_col2" RelativeSize="51.84638109305761">
+                <LayoutItem Id="Quantity" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="PlannedCost" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="RealCost" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Status" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="NumberOfCandidate" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="38.98916967509025" Removed="True">
+              <LayoutItem Id="CreateDate" RelativeSize="22.22222222222222" Removed="True" />
+              <LayoutItem Id="CreateUser" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateDate" RelativeSize="27.77777777777778" Removed="True" />
+              <LayoutItem Id="UpdateUser" RelativeSize="22.22222222222222" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="23.264540337711068" Caption="Yêu cầu">
+            <LayoutItem Id="Description" RelativeSize="100" CaptionLocation="Top" />
+          </LayoutGroup>
+          <LayoutGroup Id="candidates_Group" Direction="Vertical" RelativeSize="44.46529080675422">
+            <LayoutItem Id="candidates" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="RecruitmentPlan_ListView" TopReturnedObjects="100">
       <Columns>
         <ColumnInfo Id="Title" Width="200" />

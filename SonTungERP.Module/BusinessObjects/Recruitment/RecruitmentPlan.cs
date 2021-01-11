@@ -109,5 +109,19 @@ namespace SonTungERP.Module.BusinessObjects
             get => status;
             set => SetPropertyValue(nameof(Status), ref status, value);
         }
+
+        #region Nonpersistent
+        [XafDisplayName("Số lượng hồ sơ")]
+        public int? NumberOfCandidate => candidates?.Count;
+
+        #endregion
+
+        #region association
+
+        [XafDisplayName("Ứng viên")]
+        [Association]
+        public XPCollection<Candidate> candidates => GetCollection<Candidate>(nameof(candidates));
+
+        #endregion
     }
 }

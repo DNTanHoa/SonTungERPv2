@@ -7,15 +7,16 @@ using System.Text;
 
 namespace SonTungERP.Module.BusinessObjects
 {
-    [XafDisplayName("Người thân")]
+    [XafDisplayName("Quan hệ ứng viên")]
     [DefaultClassOptions]
-    public class EmployeeRelative : SystemBaseObject
+    public class CandidateRelative : SystemBaseObject
     {
-        public EmployeeRelative(Session session) : base(session)
+        public CandidateRelative(Session session) : base(session)
         {
+
         }
 
-        Employee employee;
+        Candidate candidate;
         RelativeType type;
         string fullName;
         DateTime dateOfBirth;
@@ -24,14 +25,13 @@ namespace SonTungERP.Module.BusinessObjects
         string phone;
         string email;
         string job;
-        bool isDependentperson;
 
         [Association]
-        [XafDisplayName("Nhân viên")]
-        public Employee Employee
+        [XafDisplayName("Ứng viên")]
+        public Candidate Candidate
         {
-            get => employee;
-            set => SetPropertyValue(nameof(Employee), ref employee, value);
+            get => candidate;
+            set => SetPropertyValue(nameof(Candidate), ref candidate, value);
         }
 
         [XafDisplayName("Mối quan hệ")]
@@ -42,6 +42,7 @@ namespace SonTungERP.Module.BusinessObjects
         }
 
         [XafDisplayName("Họ tên")]
+        [Size(250)]
         public string FullName
         {
             get => fullName;
@@ -75,14 +76,7 @@ namespace SonTungERP.Module.BusinessObjects
             get => email;
             set => SetPropertyValue(nameof(Email), ref email, value);
         }
-
-        [XafDisplayName("Là người phụ thuộc")]
-        public bool IsDependentPerson
-        {
-            get => isDependentperson;
-            set => SetPropertyValue(nameof(IsDependentPerson), ref isDependentperson, value);
-        }
-
+        
         [XafDisplayName("Ngày sinh")]
         public DateTime DateOfBirth
         {

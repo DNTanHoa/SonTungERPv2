@@ -16,6 +16,7 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
+using SonTungERP.Module.BusinessObjects;
 
 namespace SonTungERP.Module {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
@@ -29,11 +30,23 @@ namespace SonTungERP.Module {
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
+            application.ObjectSpaceCreated += Application_ObjectSpaceCreated;
             // Manage various aspects of the application UI and behavior at the module level.
         }
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
+        }
+
+        private void Application_ObjectSpaceCreated(object sender, ObjectSpaceCreatedEventArgs e)
+        {
+            var nonPersistentObjectSpace = e.ObjectSpace as NonPersistentObjectSpace;
+            if (nonPersistentObjectSpace != null)
+            {
+                IObjectSpace additionalObjectSpace = Application.CreateObjectSpace(typeof(Department));
+                nonPersistentObjectSpace.AdditionalObjectSpaces.Add(additionalObjectSpace);
+                nonPersistentObjectSpace.AutoDisposeAdditionalObjectSpaces = true;
+            }
         }
     }
 }

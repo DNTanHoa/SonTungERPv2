@@ -47,7 +47,7 @@ namespace SonTungERP.Module.BusinessObjects
         [NonPersistent]
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
-        public string DisplayName => this.Code + "-" + this.Name;
+        public string DisplayName => this.Name;
 
         [Association]
         [XafDisplayName("Danh sách xã/phường")]

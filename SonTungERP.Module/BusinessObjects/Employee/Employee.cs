@@ -24,6 +24,7 @@ namespace SonTungERP.Module.BusinessObjects
         string fullName;
         Gender gender;
         DateTime dateOfBirth;
+        Province placeOfBirth;
         DateTime dateOfJoining;
         string taxCode;
         Department department;
@@ -54,6 +55,7 @@ namespace SonTungERP.Module.BusinessObjects
         }
 
         [XafDisplayName("Họ và tên")]
+        [Size(250)]
         public string FullName
         {
             get => fullName;
@@ -102,7 +104,7 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(Designation), ref designation, value);
         }
 
-        [XafDisplayName("Công việc")]
+        [XafDisplayName("Chức danh")]
         public Job Job
         {
             get => job;
@@ -135,6 +137,12 @@ namespace SonTungERP.Module.BusinessObjects
         {
             get => identityLicesenPlace;
             set => SetPropertyValue(nameof(IdentiyLicesenPlace), ref identityLicesenPlace, value);
+        }
+
+        public Province PlaceOfBirth
+        {
+            get => placeOfBirth;
+            set => SetPropertyValue(nameof(PlaceOfBirth), ref placeOfBirth, value);
         }
 
         [XafDisplayName("Ngày cấp")]
@@ -283,6 +291,21 @@ namespace SonTungERP.Module.BusinessObjects
         [Association]
         [XafDisplayName("Thăng tiến")]
         public XPCollection<EmplyeeUpgrade> EmplyeeUpgrades => GetCollection<EmplyeeUpgrade>(nameof(EmplyeeUpgrades));
+
+        [Association]
+        [XafDisplayName("Kinh nghiệm")]
+        public XPCollection<EmployeeExperience> Experiences
+            => GetCollection<EmployeeExperience>(nameof(Experiences));
+
+        [Association]
+        [XafDisplayName("Chuyên môn")]
+        public XPCollection<EmployeeEducation> Educations
+            => GetCollection<EmployeeEducation>(nameof(Educations));
+
+        [Association]
+        [XafDisplayName("Kỹ năng")]
+        public XPCollection<EmployeeSkill> Skills
+           => GetCollection<EmployeeSkill>(nameof(Skills));
         #endregion
     }
 }
