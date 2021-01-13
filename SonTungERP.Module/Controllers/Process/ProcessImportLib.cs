@@ -402,21 +402,19 @@ namespace SonTungERP.Module.Controllers.Process
 
             foreach (DataRow row in checkInDatatable.Rows)
             {
-                if (empID != row["EmpID"]?.ToString())
+                if (empID != row["Code"]?.ToString())
                 {
-                    empID = row["EmpID"]?.ToString();
+                    empID = row["Code"]?.ToString();
                     existEmployee = employees.Where(item => item.Code == empID).FirstOrDefault();
                 }
 
-                if (existEmployee != null)
-                {
-                    var checkinRequest = objectSpace.CreateObject<EmployeeCheckIn>();
-                    checkinRequest.SetMemberValue("Employee", existEmployee);
-                    checkinRequest.SetMemberValue("Date", row["Date"]);
-                    checkinRequest.SetMemberValue("Time", row["Time"]);
+                var checkinRequest = objectSpace.CreateObject<EmployeeCheckIn>();
+                checkinRequest.SetMemberValue("Employee", existEmployee);
+                checkinRequest.SetMemberValue("AttendanceDeviceID", row["AttendanceDeviceID"]?.ToString());
+                checkinRequest.SetMemberValue("Date", row["Date"]);
+                checkinRequest.SetMemberValue("Time", row["Time"]);
 
-                    mapResult.Add(checkinRequest);
-                }
+                mapResult.Add(checkinRequest);
             }
         }
 

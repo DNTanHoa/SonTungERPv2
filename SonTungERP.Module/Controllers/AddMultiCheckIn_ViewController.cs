@@ -25,8 +25,6 @@ namespace SonTungERP.Module.Controllers
     {
         AddMultiCheckInParam param { get; set; }
 
-        private IObjectSpace departmentObjectSpace;
-
         public AddMultiCheckIn_ViewController()
         {
             InitializeComponent();
@@ -54,8 +52,6 @@ namespace SonTungERP.Module.Controllers
             base.OnViewControlsCreated();
             // Access and customize the target View control.
         }
-
-        
 
         protected override void OnDeactivated()
         {

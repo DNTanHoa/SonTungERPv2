@@ -66,25 +66,20 @@ namespace SonTungERP.Module.Controllers
                 if(convertParam.Department != null)
                 {
                     var candidate = View.SelectedObjects.Cast<Candidate>().FirstOrDefault();
-
-                    ProcessCandidateLib.process_convert_to_employee(
+                    
+                    if(candidate != null)
+                    {
+                        ProcessCandidateLib.process_convert_to_employee(
                         this.ObjectSpace,
                         candidate,
                         convertParam.Department,
                         convertParam.EmpID);
 
-                    ObjectSpace.CommitChanges();
-                    ObjectSpace.Refresh();
-                    View.Refresh();
+                        ObjectSpace.CommitChanges();
+                        ObjectSpace.Refresh();
+                        View.Refresh();
+                    }
                 }
-                else
-                {
-                    throw new Exception("Vui lòng chọn bộ phận");
-                }
-            }
-            else
-            {
-                throw new Exception("Mã nhân viên không được để trống");
             }
         }
 
@@ -100,12 +95,16 @@ namespace SonTungERP.Module.Controllers
 
     [DomainComponent]
     [XafDisplayName("Chuyển thành nhân viên")]
-    public class ConvertEmployeeParam
+    public class ConvertEmployeeParam : NonPersistentBaseObject
     {
         [XafDisplayName("Bộ phận")]
+        [ImmediatePostData(true)]
+        [RuleRequiredField("2", "DialogOK", "Vui lòng chọn bộ phận")]
         public Department Department { get; set; }
 
         [XafDisplayName("Mã nhân viên")]
+        [ImmediatePostData(true)]
+        [RuleRequiredField("1", "DialogOK", "Vui lòng điền mã nhân viên")]
         public string EmpID { get; set; }
     }
 }

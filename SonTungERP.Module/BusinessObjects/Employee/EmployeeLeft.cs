@@ -25,6 +25,7 @@ namespace SonTungERP.Module.BusinessObjects
             {
                 var employee = Session.GetObjectByKey<Employee>(Employee.Oid);
                 employee.HasLeft = true;
+                employee.Status = null;
             }
         }
 

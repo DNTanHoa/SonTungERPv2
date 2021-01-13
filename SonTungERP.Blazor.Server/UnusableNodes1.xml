@@ -20,7 +20,7 @@
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="Employee">
               <LayoutGroup Id="Employee_col2">
-                <LayoutItem Id="Identity" RelativeSize="7.894736842105263" Index="3" />
+                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="3" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>

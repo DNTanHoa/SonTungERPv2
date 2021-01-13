@@ -34,5 +34,9 @@ namespace SonTungERP.Module.BusinessObjects
             get => name;
             set => SetPropertyValue(nameof(Name), ref name, value);
         }
+
+        [Association]
+        [XafDisplayName("Bộ phận")]
+        public XPCollection<Department> Departments => GetCollection<Department>(nameof(Departments));
     }
 }

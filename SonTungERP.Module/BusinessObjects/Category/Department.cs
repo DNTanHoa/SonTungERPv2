@@ -10,7 +10,7 @@ namespace SonTungERP.Module.BusinessObjects
 {
     [XafDisplayName("Bộ phận")]
     [DefaultClassOptions]
-    [DefaultProperty(nameof(DisplayName))]
+    [DefaultProperty(nameof(Name))]
     public class Department : SystemBaseObject
     {
         public Department(Session session) 
@@ -26,6 +26,7 @@ namespace SonTungERP.Module.BusinessObjects
 
         string name;
         string code;
+        Organize parent;
         Group group;
 
         [XafDisplayName("Mã quản lý")]
@@ -42,7 +43,15 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(Name), ref name, value);
         }
 
+        [XafDisplayName("Nhóm bộ phận")]
+        public Organize Parent
+        {
+            get => parent;
+            set => SetPropertyValue(nameof(Parent), ref parent, value);
+        }
+
         [XafDisplayName("Nhóm")]
+        [Association]
         public Group Group
         {
             get => group;
@@ -52,6 +61,10 @@ namespace SonTungERP.Module.BusinessObjects
         [NonPersistent]
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
-        public string DisplayName => this.Name;
+        public string DisplayName => this.Code + "-" +this.Name;
+
+        [Association]
+        [XafDisplayName("Nhân viên")]
+        public XPCollection<Employee> Employees => GetCollection<Employee>(nameof(Employees));
     }
 }

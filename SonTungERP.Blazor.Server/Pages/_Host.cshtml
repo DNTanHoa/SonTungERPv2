@@ -16,6 +16,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="~/images/sontung.png">
     <script src="~/serviceworker.js"></script>
     <script src="~/js/site.js"></script>
+    <link href="site/styles.css" rel="stylesheet" />
+
     <title>Hệ thống quản lý nhân sự - Công ty TNHH may mặc Sơn Tùng</title>
     <base href="~/" />
 </head>
@@ -62,7 +64,9 @@
             <component type="typeof(BlazorError)" render-mode="Static" />
         </div>
 
+        <script src="~/js/dashboard.js"></script>
         <script src="_framework/blazor.server.js"></script>
+        <script src="site/bundle.js"></script>
     }
 </body>
 </html>

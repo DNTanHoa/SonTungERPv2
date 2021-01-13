@@ -44,6 +44,7 @@ namespace SonTungERP.Module.BusinessObjects
         MaritalStatus maritalStatus;
         EmployeeStatus status;
         Group group;
+        string attendanceDeviceID;
 
         bool hasLeft;
 
@@ -52,6 +53,13 @@ namespace SonTungERP.Module.BusinessObjects
         {
             get => code;
             set => SetPropertyValue(nameof(Code), ref code, value);
+        }
+
+        [XafDisplayName("Mã điểm danh")]
+        public string AttendanceDeviceID
+        {
+            get => attendanceDeviceID;
+            set => SetPropertyValue(nameof(AttendanceDeviceID), ref attendanceDeviceID, value);
         }
 
         [XafDisplayName("Họ và tên")]
@@ -90,6 +98,7 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(TaxCode), ref taxCode, value);
         }
 
+        [Association]
         [XafDisplayName("Bộ phận")]
         public Department Department
         {
@@ -139,6 +148,7 @@ namespace SonTungERP.Module.BusinessObjects
             set => SetPropertyValue(nameof(IdentiyLicesenPlace), ref identityLicesenPlace, value);
         }
 
+        [XafDisplayName("Nơi sinh")]
         public Province PlaceOfBirth
         {
             get => placeOfBirth;
@@ -241,6 +251,15 @@ namespace SonTungERP.Module.BusinessObjects
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
         public string DisplayName => this.Code + "-" + this.FullName;
+
+
+        [NonPersistent]
+        [XafDisplayName("Độ tuổi")]
+        public int YearOld => DateTime.Now.Year - this.dateOfBirth.Year;
+
+        [NonPersistent]
+        [XafDisplayName("Thâm niên")]
+        public double Experience => (DateTime.Now.Year - this.DateOfJoining.Year);
 
         [XafDisplayName("Nghỉ việc")]
         public bool HasLeft

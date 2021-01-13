@@ -6,6 +6,7 @@
       <Action Id="CancelAction" Caption="Thoát" ImageName="Cancel" />
       <Action Id="ChangePasswordByUser" Caption="Đổi mật khẩu" />
       <Action Id="Close" Caption="Đóng" />
+      <Action Id="ConvertCandidateAction" ImageName="Action_Redo" />
       <Action Id="Delete" ShortCaption="Xóa" ConfirmationMessage="Đồng ý xóa những bản ghi đã chọn?" Caption="Xóa" />
       <Action Id="Delete Item" Caption="Xóa" ConfirmationMessage="Đồng ý xóa bản ghi hiện tại?" />
       <Action Id="DialogCancel" Caption="Thoát" />
@@ -15,11 +16,15 @@
       <Action Id="ImportDepartmentAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="ImportDesignationAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="ImportEmployeeAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="ImportEmployeeCheckInAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="ImportEmployeeContactAction" ImageName="Action_Export_ToXLSX" />
       <Action Id="ImportHRIPAction" ImageName="Action_Export_ToXLSX" />
+      <Action Id="InputMultiCheckInAction" ImageName="State_Task_InProgress" />
+      <Action Id="InputMultiShiftAction" ImageName="ModelEditor_Action_Modules" />
       <Action Id="Link" Caption="Liên kết" />
       <Action Id="Logoff" Caption="Đăng xuất" />
       <Action Id="Logon" Caption="Đăng nhập" />
+      <Action Id="MarkAttendanceAction" ImageName="ModelEditor_DashboardView" />
       <Action Id="MyDetails" Caption="Tài khoản" />
       <Action Id="New" Caption="Thêm mới" />
       <Action Id="Refresh" ShortCaption="Tải lại" Caption="Tải lại" />
@@ -78,28 +83,31 @@
   <NavigationItems>
     <Items>
       <Item Id="@68aac97b-1f69-45a5-ae4e-ba000f237027" Caption="Báo cáo" Index="-2" IsNewNode="True" />
-      <Item Id="@fee06bd0-1779-4ec2-a888-200159f3351a" Caption="Thống kê" Index="-1" IsNewNode="True" />
       <Item Id="@a08109fa-8c20-49c8-b5b9-ea3d201b7ae7" Caption="Nhân viên" Index="0" IsNewNode="True">
         <Items IsNewNode="True">
-          <Item Id="@2dfaa567-bf6e-4f14-a4df-71309afda745" ViewId="Employee_ListView" Caption="Danh sách" Index="0" IsNewNode="True" />
+          <Item Id="@2dfaa567-bf6e-4f14-a4df-71309afda745" Caption="Danh sách" Index="0" ViewId="Employee_ListView" IsNewNode="True" />
           <Item Id="@86d1b0f9-fcf7-4258-9c32-dc1f50b3e5f5" ViewId="EmployeeContract_ListView" Index="1" Caption="Hợp đồng" IsNewNode="True" />
           <Item Id="@6d28cc2b-75d7-482d-bf8e-2cbc219063cf" ViewId="EmployeeInsurance_ListView" Index="2" IsNewNode="True" />
           <Item Id="@a94a5352-4096-4cb9-889f-23b8d22519ca" ViewId="EmployeeRelative_ListView" Index="3" IsNewNode="True" />
           <Item Id="@98413f43-12cf-4dc8-adf2-d83d66198456" ViewId="EmployeeLeft_ListView" Index="99" IsNewNode="True" />
+          <Item Id="@074250f6-716c-4b63-9d4f-a70e359e9bc0" ViewId="Employee_ListView_Year" Caption="Nhóm tuổi" IsNewNode="True" />
           <Item Id="@2c0a9d3c-9c8c-4433-88d5-6cf41f064bba" ViewId="EmployeeContact_ListView" IsNewNode="True" />
           <Item Id="@d28d5a36-8ad7-40ca-855a-19eef7a1382e" ViewId="EmployeeBankAccount_ListView" IsNewNode="True" />
+          <Item Id="@fa86252b-9383-45b9-9c7c-7afa286d7f72" ViewId="EmployeePregnant_ListView" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="@f3bd05d5-3139-4c6e-8612-fe12b837e3f7" Caption="Quá trình" Index="0" IsNewNode="True">
         <Items IsNewNode="True">
+          <Item Id="@32f22a1f-0088-4b49-a488-610c4ef72530" ViewId="EmployeeEvaluate_ListView" IsNewNode="True" />
           <Item Id="@c2a37240-ad5c-4191-95ba-305c4f96950b" ViewId="EmplyeeUpgrade_ListView" IsNewNode="True" />
           <Item Id="@c5acca2b-d6c2-4865-949a-66993566251b" ViewId="EmployeeTransfer_ListView" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Recruitment" Caption="Tuyển dụng" Index="1" IsNewNode="True">
         <Items IsNewNode="True">
-          <Item Id="@36a419c4-88ac-4829-98dc-1c22edafe9a6" ViewId="Candidate_ListView" IsNewNode="True" />
-          <Item Id="@4f11564f-52a7-4b91-86e9-88c15d3a8e9e" ViewId="RecruitmentPlan_ListView" IsNewNode="True" />
+          <Item Id="@4f11564f-52a7-4b91-86e9-88c15d3a8e9e" ViewId="RecruitmentPlan_ListView" Index="1" IsNewNode="True" />
+          <Item Id="Interview" ViewId="CandidateInterview_ListView" Index="1" IsNewNode="True" />
+          <Item Id="@36a419c4-88ac-4829-98dc-1c22edafe9a6" ViewId="Candidate_ListView" Index="2" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="@5e060ec0-00f6-44dd-96cc-635c47deccc2" Caption="Quản lý ca" Index="2" IsNewNode="True">
@@ -138,6 +146,7 @@
           <Item Id="@b3949854-719d-44c7-9649-f7ef328299d4" ViewId="Job_ListView" Caption="Chức danh" IsNewNode="True" />
           <Item Id="@c73ff8c0-2368-4384-a5a0-758bd10c4cec" ViewId="Gender_ListView" IsNewNode="True" />
           <Item Id="@d7181f04-e760-48d5-910f-5e947dfe8692" ViewId="SkillLevel_ListView" IsNewNode="True" />
+          <Item Id="@d7183896-ecff-4dad-a380-154bb68a6f88" ViewId="Organize_ListView" IsNewNode="True" />
           <Item Id="@d8b2c754-7803-4594-8f06-28c62283a49e" ViewId="HealthInsuranceRegisterPlace_ListView" IsNewNode="True" />
           <Item Id="@e2af8c8b-3689-4826-ba43-b644db55e681" ViewId="Ward_ListView" Caption="Xã - Phường" IsNewNode="True" />
           <Item Id="@edfe1bb4-9466-4c81-8011-0c8eaf7696df" ViewId="EmployeeStatus_ListView" IsNewNode="True" />
@@ -150,6 +159,11 @@
           <Item Id="@44ce9dcc-e0da-4bb4-9e88-dbb8cad8b7ee" ViewId="PermissionPolicyUser_DetailView" ObjectKey="@CurrentUserID" Caption="Thông tin tài khoản" IsNewNode="True" />
           <Item Id="@6fad7e22-e330-4969-b3bc-e120055c341b" ViewId="PermissionPolicyUser_ListView" Caption="Thành viên" IsNewNode="True" />
           <Item Id="@ba01a57e-2b4c-4e5b-b772-12ec8569269a" ViewId="PermissionPolicyRole_ListView" Caption="Phân quyền" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="@fee06bd0-1779-4ec2-a888-200159f3351a" Caption="Thống kê" Index="99" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="EmployeeStatistic" Caption="Thống kê nhân viên" ViewId="Dashboard" IsNewNode="True" />
         </Items>
       </Item>
       <Item Id="Default" Removed="True">
@@ -171,7 +185,7 @@
       <Item Id="Reports" Removed="True" />
     </Items>
   </NavigationItems>
-  <Options>
+  <Options LookupSmallCollectionItemCount="2000">
     <Dashboards EnableCustomization="False" />
   </Options>
   <SchemaModules>
@@ -182,7 +196,88 @@
       <RuleRequiredField MessageTemplateMustNotBeEmpty="&quot;{TargetPropertyName}&quot; Không được để trống." />
     </ErrorMessageTemplates>
   </Validation>
+  <ViewItems>
+    <PropertyEditor Name="PropertyEditors">
+      <RegisteredPropertyEditor PropertyType="System.DateTime" DefaultDisplayFormat="{0:dd/MM/yyyy}" DefaultEditMask="dd/MM/yyyy" />
+    </PropertyEditor>
+  </ViewItems>
   <Views>
+    <DetailView Id="AddMultiCheckInParam_DetailView">
+      <Items>
+        <PropertyEditor Id="TimeIn" DisplayFormat="{0:HH:mm}" EditMask="HH:mm" PropertyEditorType="SonTungERP.Module.Blazor.TimePropertyEditor" />
+        <PropertyEditor Id="TimeOut" DisplayFormat="{0:HH:mm}" PropertyEditorType="SonTungERP.Module.Blazor.TimePropertyEditor" EditMask="HH:mm" />
+      </Items>
+    </DetailView>
+    <ListView Id="AddMultiCheckInParam_Employees_ListView">
+      <Columns>
+        <ColumnInfo Id="AttendanceDeviceID" Removed="True" />
+        <ColumnInfo Id="Avartar" Removed="True" />
+        <ColumnInfo Id="AvartarData" Removed="True" />
+        <ColumnInfo Id="CreateDate" Removed="True" />
+        <ColumnInfo Id="CreateUser" Removed="True" />
+        <ColumnInfo Id="DateOfBirth" Removed="True" />
+        <ColumnInfo Id="DateOfJoining" Removed="True" />
+        <ColumnInfo Id="Department" Removed="True" />
+        <ColumnInfo Id="Designation" Removed="True" />
+        <ColumnInfo Id="DisplayName" Removed="True" />
+        <ColumnInfo Id="EducationLevel" Removed="True" />
+        <ColumnInfo Id="Gender" Removed="True" />
+        <ColumnInfo Id="Group" Removed="True" />
+        <ColumnInfo Id="HasLeft" Removed="True" />
+        <ColumnInfo Id="Identity" Removed="True" />
+        <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
+        <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
+        <ColumnInfo Id="Job" Removed="True" />
+        <ColumnInfo Id="Major" Removed="True" />
+        <ColumnInfo Id="MaritalStatus" Removed="True" />
+        <ColumnInfo Id="Nation" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="PlaceOfBirth" Removed="True" />
+        <ColumnInfo Id="Religion" Removed="True" />
+        <ColumnInfo Id="School" Removed="True" />
+        <ColumnInfo Id="Social" Removed="True" />
+        <ColumnInfo Id="Status" Removed="True" />
+        <ColumnInfo Id="TaxCode" Removed="True" />
+        <ColumnInfo Id="UpdateDate" Removed="True" />
+        <ColumnInfo Id="UpdateUser" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="AddMultiShiftParam_Employees_ListView">
+      <Columns>
+        <ColumnInfo Id="AttendanceDeviceID" Removed="True" />
+        <ColumnInfo Id="Avartar" Removed="True" />
+        <ColumnInfo Id="AvartarData" Removed="True" />
+        <ColumnInfo Id="CreateDate" Removed="True" />
+        <ColumnInfo Id="CreateUser" Removed="True" />
+        <ColumnInfo Id="DateOfBirth" Removed="True" />
+        <ColumnInfo Id="DateOfJoining" Removed="True" />
+        <ColumnInfo Id="Department" Removed="True" />
+        <ColumnInfo Id="Designation" Removed="True" />
+        <ColumnInfo Id="DisplayName" Removed="True" />
+        <ColumnInfo Id="EducationLevel" Removed="True" />
+        <ColumnInfo Id="Experience" Removed="True" />
+        <ColumnInfo Id="Gender" Removed="True" />
+        <ColumnInfo Id="Group" Removed="True" />
+        <ColumnInfo Id="HasLeft" Removed="True" />
+        <ColumnInfo Id="Identity" Removed="True" />
+        <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
+        <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
+        <ColumnInfo Id="Job" Removed="True" />
+        <ColumnInfo Id="Major" Removed="True" />
+        <ColumnInfo Id="MaritalStatus" Removed="True" />
+        <ColumnInfo Id="Nation" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="PlaceOfBirth" Removed="True" />
+        <ColumnInfo Id="Religion" Removed="True" />
+        <ColumnInfo Id="School" Removed="True" />
+        <ColumnInfo Id="Social" Removed="True" />
+        <ColumnInfo Id="Status" Removed="True" />
+        <ColumnInfo Id="TaxCode" Removed="True" />
+        <ColumnInfo Id="UpdateDate" Removed="True" />
+        <ColumnInfo Id="UpdateUser" Removed="True" />
+        <ColumnInfo Id="YearOld" Removed="True" />
+      </Columns>
+    </ListView>
     <DetailView Id="AuthenticationStandardLogonParameters_Blazor_DetailView" Caption="Đăng nhập hệ thống">
       <Items>
         <StaticText Id="LogonText" Caption="LogonText(5)" />
@@ -230,39 +325,42 @@
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="71.53153153153153" IsNewNode="True">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="71.97231833910034" IsNewNode="True">
               <LayoutGroup Id="Candidate" ShowCaption="True" Caption="Thông tin ứng viên" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="Candidate_col1" ShowCaption="False" Index="0" RelativeSize="50" IsNewNode="True">
-                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
-                  <LayoutItem Id="FullName" ViewItem="FullName" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Gender" ViewItem="Gender" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Phone" ViewItem="Phone" Index="3" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Email" ViewItem="Email" Index="4" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="OriginAddress" ViewItem="OriginAddress" Index="5" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="TemporaryAddress" ViewItem="TemporaryAddress" Index="6" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Identity" ViewItem="Identity" Index="7" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="IdentiyLicesenPlace" ViewItem="IdentiyLicesenPlace" Index="8" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="IdetityLicesenDate" ViewItem="IdetityLicesenDate" Index="9" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Education" ViewItem="Education" Index="10" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Major" ViewItem="Major" Index="11" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="School" ViewItem="School" Index="12" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Employee" ViewItem="Employee" Index="13" RelativeSize="10.614525139664805" IsNewNode="True" />
+                <LayoutGroup Id="Candidate_col1" ShowCaption="False" Index="0" RelativeSize="50.678733031674206" IsNewNode="True">
+                  <LayoutItem Id="RecruitmentPlan" ViewItem="RecruitmentPlan" Index="0" RelativeSize="8.488063660477454" IsNewNode="True" />
+                  <LayoutItem Id="Code" ViewItem="Code" Index="1" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="FullName" ViewItem="FullName" Index="2" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Gender" ViewItem="Gender" Index="3" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Phone" ViewItem="Phone" Index="4" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Email" ViewItem="Email" Index="5" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="OriginAddress" ViewItem="OriginAddress" Index="6" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="TemporaryAddress" ViewItem="TemporaryAddress" Index="7" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Identity" ViewItem="Identity" Index="8" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="IdentiyLicesenPlace" ViewItem="IdentiyLicesenPlace" Index="9" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="IdetityLicesenDate" ViewItem="IdetityLicesenDate" Index="10" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="DateOfBirth" ViewItem="DateOfBirth" Index="11" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="PlaceOfBirth" ViewItem="PlaceOfBirth" Index="12" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Religion" ViewItem="Religion" Index="13" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Designation" ViewItem="Designation" Index="14" RelativeSize="8.753315649867375" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="Candidate_col2" ShowCaption="False" Index="1" RelativeSize="50" IsNewNode="True">
-                  <LayoutItem Id="EmployeeCode" ViewItem="EmployeeCode" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
-                  <LayoutItem Id="MaritalStatus" ViewItem="MaritalStatus" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="FileSavePath" ViewItem="FileSavePath" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Quality" ViewItem="Quality" Index="3" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Strength" ViewItem="Strength" Index="4" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Weakness" ViewItem="Weakness" Index="5" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Personalities" ViewItem="Personalities" Index="6" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Gifted" ViewItem="Gifted" Index="7" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="Interests" ViewItem="Interests" Index="8" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="ProbationarySalary" ViewItem="ProbationarySalary" Index="9" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="OfficalSalary" ViewItem="OfficalSalary" Index="10" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="DesiredSalary" ViewItem="DesiredSalary" Index="11" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="WillJoinDate" ViewItem="WillJoinDate" Index="12" RelativeSize="6.70391061452514" IsNewNode="True" />
-                  <LayoutItem Id="DesiredContractType" ViewItem="DesiredContractType" Index="13" RelativeSize="10.614525139664805" IsNewNode="True" />
+                <LayoutGroup Id="Candidate_col2" ShowCaption="False" Index="1" RelativeSize="49.321266968325794" IsNewNode="True">
+                  <LayoutItem Id="Job" ViewItem="Job" Index="0" RelativeSize="8.488063660477454" IsNewNode="True" />
+                  <LayoutGroup Id="Auto4ba432f0-626d-4bfc-b9f8-0037bbea14df" ShowCaption="False" Caption="Auto4ba432f0-626d-4bfc-b9f8-0037bbea14df(22)" Direction="Vertical" Index="1" RelativeSize="0.26525198938992045" IsNewNode="True" />
+                  <LayoutItem Id="MaritalStatus" ViewItem="MaritalStatus" Index="2" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Quality" ViewItem="Quality" Index="3" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Strength" ViewItem="Strength" Index="4" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Weakness" ViewItem="Weakness" Index="5" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Personalities" ViewItem="Personalities" Index="6" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Gifted" ViewItem="Gifted" Index="7" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Interests" ViewItem="Interests" Index="8" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="ProbationarySalary" ViewItem="ProbationarySalary" Index="9" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="OfficalSalary" ViewItem="OfficalSalary" Index="10" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="DesiredSalary" ViewItem="DesiredSalary" Index="11" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="WillJoinDate" ViewItem="WillJoinDate" Index="12" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="DesiredContractType" ViewItem="DesiredContractType" Index="13" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="EmployeeCode" ViewItem="EmployeeCode" Index="14" RelativeSize="6.36604774535809" IsNewNode="True" />
+                  <LayoutItem Id="Employee" ViewItem="Employee" Index="15" RelativeSize="8.488063660477454" IsNewNode="True" />
                 </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Quan hệ gia đình" RelativeSize="100" IsNewNode="True">
@@ -278,12 +376,12 @@
                 <LayoutItem Id="Skills" ViewItem="Skills" Index="0" RelativeSize="100" IsNewNode="True" />
               </LayoutGroup>
             </TabbedGroup>
-            <LayoutGroup Id="SystemBaseObject" RelativeSize="28.46846846846847" Index="1">
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="28.027681660899653" Index="1">
               <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
-                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="26.89075630252101" IsNewNode="True" />
-                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="20.168067226890756" IsNewNode="True" />
-                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="20.168067226890756" IsNewNode="True" />
-                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="32.773109243697476" IsNewNode="True" />
+                <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="26.016260162601625" IsNewNode="True" />
+                <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="19.51219512195122" IsNewNode="True" />
+                <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="19.51219512195122" IsNewNode="True" />
+                <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="34.959349593495936" IsNewNode="True" />
               </LayoutGroup>
               <LayoutItem Id="CreateDate" RelativeSize="22.22222222222222" Removed="True" />
               <LayoutItem Id="CreateUser" RelativeSize="27.77777777777778" Removed="True" />
@@ -473,11 +571,33 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="CheckInImportParam_DetailView">
+      <Items>
+        <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
+      </Items>
+    </DetailView>
     <DetailView Id="ContactImportParam_DetailView">
       <Items>
         <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
       </Items>
     </DetailView>
+    <DashboardView Id="Dashboard" Caption="Thống kê nhân viên" IsNewNode="True">
+      <Items IsNewNode="True">
+        <ComponentViewItem Id="TestItem" Caption="Test" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" IsNewNode="True">
+          <LayoutItem Id="TestItem" ViewItem="TestItem" Index="0" IsNewNode="True" />
+        </LayoutGroup>
+      </Layout>
+    </DashboardView>
+    <ListView Id="Department_ListView" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="True">
+      <Columns>
+        <ColumnInfo Id="Name" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Parent" SortIndex="-1" SortOrder="Ascending" GroupIndex="1" />
+        <ColumnInfo Id="Group" SortOrder="Ascending" GroupIndex="0" />
+      </Columns>
+    </ListView>
     <DetailView Id="DesignationImportParam_DetailView">
       <Items>
         <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
@@ -519,7 +639,6 @@
                 <LayoutItem Id="Designation" ViewItem="Designation" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
                 <LayoutItem Id="Nation" ViewItem="Nation" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
                 <LayoutItem Id="Identity" ViewItem="Identity" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="IdentiyLicesenPlace" RelativeSize="7.894736842105263" Index="3" />
                 <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="4" />
                 <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="5" />
                 <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="6" />
@@ -572,7 +691,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Employee_ListView" ShowFindPanel="True" Caption="Danh sách nhân viên" MasterDetailMode="ListViewAndDetailView">
+    <ListView Id="Employee_ListView" ShowFindPanel="True" Caption="Danh sách nhân viên" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="False" GroupSummary="Empty" DataAccessMode="Client" ShowAutoFilterRow="True">
       <Columns>
         <ColumnInfo Id="CreateDate" PropertyName="CreateDate" Index="-1" Width="70" Removed="True" />
         <ColumnInfo Id="CreateUser" PropertyName="CreateUser" Index="-1" Width="70" Removed="True" />
@@ -580,18 +699,20 @@
         <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Width="70" Removed="True" />
         <ColumnInfo Id="UpdateDate" PropertyName="UpdateDate" Index="-1" Width="70" Removed="True" />
         <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" Removed="True" />
-        <ColumnInfo Id="Code" Width="84" />
-        <ColumnInfo Id="FullName" Width="67" MaxLength="300" />
-        <ColumnInfo Id="Gender" Width="58" />
-        <ColumnInfo Id="DateOfBirth" Width="67" />
-        <ColumnInfo Id="DateOfJoining" Width="85" />
-        <ColumnInfo Id="TaxCode" Width="73" />
-        <ColumnInfo Id="Department" Width="0" />
+        <ColumnInfo Id="Code" Width="84" Index="0" />
+        <ColumnInfo Id="AttendanceDeviceID" Index="1" Width="117" />
+        <ColumnInfo Id="Department" Width="104" Index="2" SortOrder="Ascending" GroupIndex="1" SortIndex="-1" PropertyName="Department.Code" Caption="Bộ phận" />
+        <ColumnInfo Id="FullName" Width="67" MaxLength="400" Index="3" />
+        <ColumnInfo Id="Gender" Width="58" Index="4" />
+        <ColumnInfo Id="DateOfBirth" Width="67" Index="5" />
+        <ColumnInfo Id="DateOfJoining" Width="85" Index="6" />
+        <ColumnInfo Id="TaxCode" Width="73" Index="7" />
         <ColumnInfo Id="Designation" Width="74" />
         <ColumnInfo Id="Nation" Width="57" />
-        <ColumnInfo Id="HasLeft" Width="63" />
-        <ColumnInfo Id="Group" Width="47" />
-        <ColumnInfo Id="Status" Width="69" />
+        <ColumnInfo Id="PlaceOfBirth" Index="10" Width="85" />
+        <ColumnInfo Id="HasLeft" Width="63" Index="11" />
+        <ColumnInfo Id="Status" Width="69" Index="12" />
+        <ColumnInfo Id="Group" Width="60" SortOrder="Descending" GroupIndex="0" Index="13" />
         <ColumnInfo Id="Avartar" Removed="True" />
         <ColumnInfo Id="AvartarData" Removed="True" />
         <ColumnInfo Id="EducationLevel" Removed="True" />
@@ -604,6 +725,26 @@
         <ColumnInfo Id="Religion" Removed="True" />
         <ColumnInfo Id="School" Removed="True" />
         <ColumnInfo Id="Social" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Employee_ListView_Varied" ClassName="SonTungERP.Module.BusinessObjects.Employee" ShowFindPanel="False" Caption="Danh sách nhân viên" MasterDetailMode="ListViewOnly" GroupSummary="" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Code" PropertyName="Code" IsNewNode="True" />
+      </Columns>
+      <Variants IsNewNode="True">
+        <Variant Id="Default" ViewID="Employee_ListView" Index="1" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Employee_ListView_Year" ClassName="SonTungERP.Module.BusinessObjects.Employee" ShowFindPanel="True" Caption="Danh sách nhân viên" MasterDetailMode="ListViewAndDetailView" GroupSummary="Empty" ShowAutoFilterRow="True" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Code" PropertyName="Code" Width="84" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Department" PropertyName="Department.Code" Width="104" Index="2" SortOrder="Ascending" GroupIndex="1" Caption="Bộ phận" IsNewNode="True" />
+        <ColumnInfo Id="FullName" PropertyName="FullName" Width="67" MaxLength="400" Index="3" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+        <ColumnInfo Id="Gender" PropertyName="Gender" Width="58" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="DateOfBirth" PropertyName="DateOfBirth" Width="67" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="DateOfJoining" PropertyName="DateOfJoining" Width="85" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="YearOld" PropertyName="YearOld" Width="50" Index="12" IsNewNode="True" />
+        <ColumnInfo Id="Experience" PropertyName="Experience" Width="50" Index="13" IsNewNode="True" />
       </Columns>
     </ListView>
     <ListView Id="EmployeeBankAccount_ListView" IsGroupPanelVisible="False" GroupSummary="Empty" AutoExpandAllGroups="True" ShowAutoFilterRow="False">
@@ -620,6 +761,11 @@
         <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
       </Items>
     </DetailView>
+    <ListView Id="EmployeeCheckIn_ListView">
+      <Columns>
+        <ColumnInfo Id="Time" DisplayFormat="{0:HH:mm}" EditMask="HH:mm" PropertyEditorType="SonTungERP.Module.Blazor.TimePropertyEditor" />
+      </Columns>
+    </ListView>
     <ListView Id="EmployeeContact_ListView">
       <Columns>
         <ColumnInfo Id="EmployeeCode" PropertyName="Employee.Code" Index="0" Width="93" IsNewNode="True" />

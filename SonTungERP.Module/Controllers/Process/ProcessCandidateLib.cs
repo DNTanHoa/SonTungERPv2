@@ -14,17 +14,7 @@ namespace SonTungERP.Module.Controllers.Process
             Department department,
             string empID)
         {
-            if(candidate == null)
-            {
-                return;
-            }
-
-            if(string.IsNullOrEmpty(empID))
-            {
-                return;
-            }
-
-            if(candidate.Employee)
+            if (!string.IsNullOrEmpty(candidate?.EmployeeCode))
             {
                 return;
             }
@@ -41,7 +31,7 @@ namespace SonTungERP.Module.Controllers.Process
             employee.Gender = candidate.Gender;
             employee.DateOfBirth = candidate.DateOfBirth;
             employee.PlaceOfBirth = candidate.PlaceOfBirth;
-            employee.DateOfJoining = candidate.WillJoinDate.Value;
+            employee.DateOfJoining = candidate.WillJoinDate.GetValueOrDefault();
             employee.Department = departmentUpdate;
             employee.Job = candidate.Job;
             employee.Designation = candidate.Designation;

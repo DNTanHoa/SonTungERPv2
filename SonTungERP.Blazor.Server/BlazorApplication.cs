@@ -55,6 +55,8 @@ namespace SonTungERP.Blazor.Server {
                 e.Handled = true;
             }
             else {
+                e.Updater.Update();
+                e.Handled = true;
                 string message = "The application cannot connect to the specified database, " +
                     "because the database doesn't exist, its version is older " +
                     "than that of the application or its schema does not match " +

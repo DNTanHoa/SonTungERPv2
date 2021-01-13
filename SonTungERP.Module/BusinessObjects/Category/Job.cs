@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SonTungERP.Module.BusinessObjects
 {
-    [XafDisplayName("Chức vụ")]
+    [XafDisplayName("Chức danh")]
     [DefaultClassOptions]
     [DefaultProperty(nameof(DisplayName))]
     public class Job : SystemBaseObject

@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp.DC;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using System;
@@ -14,6 +15,20 @@ namespace SonTungERP.Module.BusinessObjects
         public EmployeeCheckIn(Session session) : base(session)
         {
 
+        }
+
+        protected override void OnSaving()
+        {
+            base.OnSaving();
+
+            if (!string.IsNullOrEmpty(this.AttendanceDeviceID))
+            {
+                var employee = Session.FindObject<Employee>(
+                    CriteriaOperator.Parse("[AttendanceDeviceID] = ?", this.AttendanceDeviceID), false);
+                
+                if(employee == null)
+                    this.Employee = employee;
+            }
         }
 
         Employee employee;

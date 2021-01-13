@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sheet name="CHECKIN">
+  <Column propertyName="Code" excelHeader="Mã nhân viên"/>
+  <Column propertyName="AttendanceDeviceID" excelHeader="Mã chấm côg"/>
+  <Column propertyName="Date" excelHeader="Ngày"/>
+  <Column propertyName="Time" excelHeader="Giờ"/>
+</Sheet>

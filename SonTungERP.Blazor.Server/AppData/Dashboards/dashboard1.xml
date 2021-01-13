@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Visible="false" Text="New Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="Employee" ComponentName="sqlDataSource1">
+      <Connection Name="ConnectionString" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="Employee">
+        <Tables>
+          <Table Name="Employee" />
+          <Table Name="Department" />
+          <Table Name="Gender" />
+          <Table Name="EmployeeStatus" />
+          <Table Name="EmployeeStatus" Alias="EmployeeStatus_1" />
+          <Relation Type="Inner" Parent="Employee" Nested="Department">
+            <KeyColumn Parent="Department" Nested="Oid" />
+          </Relation>
+          <Relation Type="Inner" Parent="Employee" Nested="Gender">
+            <KeyColumn Parent="Gender" Nested="Oid" />
+          </Relation>
+          <Relation Type="Inner" Parent="Employee" Nested="EmployeeStatus">
+            <KeyColumn Parent="Status" Nested="Oid" />
+          </Relation>
+          <Relation Type="Inner" Parent="Employee" Nested="EmployeeStatus_1">
+            <KeyColumn Parent="Status" Nested="Oid" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="Employee" Name="Oid" />
+          <Column Table="Employee" Name="CreateUser" />
+          <Column Table="Employee" Name="UpdateUser" />
+          <Column Table="Employee" Name="CreateDate" />
+          <Column Table="Employee" Name="UpdateDate" />
+          <Column Table="Employee" Name="Code" />
+          <Column Table="Employee" Name="FullName" />
+          <Column Table="Employee" Name="Gender" />
+          <Column Table="Employee" Name="DateOfBirth" />
+          <Column Table="Employee" Name="DateOfJoining" />
+          <Column Table="Employee" Name="TaxCode" />
+          <Column Table="Employee" Name="Department" />
+          <Column Table="Employee" Name="Designation" />
+          <Column Table="Employee" Name="Job" />
+          <Column Table="Employee" Name="Nation" />
+          <Column Table="Employee" Name="Religion" />
+          <Column Table="Employee" Name="Identity" />
+          <Column Table="Employee" Name="IdentiyLicesenPlace" />
+          <Column Table="Employee" Name="IdetityLicesenDate" />
+          <Column Table="Employee" Name="Social" />
+          <Column Table="Employee" Name="EducationLevel" />
+          <Column Table="Employee" Name="School" />
+          <Column Table="Employee" Name="Major" />
+          <Column Table="Employee" Name="Avartar" />
+          <Column Table="Employee" Name="MaritalStatus" />
+          <Column Table="Employee" Name="HasLeft" />
+          <Column Table="Employee" Name="Group" />
+          <Column Table="Employee" Name="OptimisticLockField" />
+          <Column Table="Employee" Name="GCRecord" />
+          <Column Table="Employee" Name="Status" />
+          <Column Table="Employee" Name="PlaceOfBirth" />
+          <Column Table="Employee" Name="AttendanceDeviceID" />
+          <Column Table="Department" Name="Oid" Alias="Department_Oid" />
+          <Column Table="Department" Name="Name" />
+          <Column Table="Gender" Name="Code" Alias="Gender_Code" />
+          <Column Table="Gender" Name="Name" Alias="Gender_Name" />
+          <Column Table="EmployeeStatus" Name="Name" Alias="EmployeeStatus_Name" />
+          <Column Table="EmployeeStatus" Name="Code" Alias="EmployeeStatus_Code" />
+          <Column Table="Department" Name="Code" Alias="Department_Code" />
+          <Column Table="EmployeeStatus_1" Name="Name" Alias="EmployeeStatus_1_Name" />
+          <Column Table="EmployeeStatus_1" Name="Code" Alias="EmployeeStatus_1_Code" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" ShowCaption="false" DataSource="sqlDataSource1" DataMember="Employee">
+      <DataItems>
+        <Dimension DataMember="Gender_Name" DefaultId="DataItem0" />
+        <Measure DataMember="Code" Name="Tỷ lệ giới tính" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem1" Name="Thống kê nhân sự theo bộ phận" ShowCaption="false" DataSource="sqlDataSource1" DataMember="Employee">
+      <DataItems>
+        <Measure DataMember="Code" SummaryType="CountDistinct" DefaultId="DataItem2" />
+        <Dimension DataMember="Department_Code" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Số lượng nhân viên" PlotOnSecondaryAxis="true">
+              <Value DefaultId="DataItem2" />
+              <PointLabelOptions ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem2" Name="Chart 1" ShowCaption="false" DataSource="sqlDataSource1" DataMember="Employee">
+      <ColoringOptions MeasuresColoringMode="Hue" />
+      <DataItems>
+        <Dimension DataMember="DateOfJoining" DateTimeGroupInterval="MonthYear" DefaultId="DataItem0" />
+        <Measure DataMember="Code" SummaryType="CountDistinct" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Số lượng nhân viên vào làm" SeriesType="Line">
+              <Value DefaultId="DataItem1" />
+              <PointLabelOptions ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem2" Name="Pies 2" ShowCaption="false" DataSource="sqlDataSource1" DataMember="Employee">
+      <DataItems>
+        <Dimension DataMember="Gender_Name" DefaultId="DataItem0" />
+        <Measure DataMember="Code" Name="Tỷ lệ giới tính" SummaryType="CountDistinct" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem3" Name="Thống kê nhân sự theo bộ phận" DataSource="sqlDataSource1" DataMember="Employee">
+      <ColoringOptions MeasuresColoringMode="Hue" />
+      <DataItems>
+        <Dimension DataMember="Department_Code" DefaultId="DataItem0" />
+        <Measure DataMember="Code" SummaryType="Count" DefaultId="DataItem1" />
+        <Dimension DataMember="HasLeft" Name="Đang làm việc" ColoringMode="Hue" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem2" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple Name="Số lượng">
+              <Value DefaultId="DataItem1" />
+              <PointLabelOptions ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical">
+        <LayoutItem DashboardItem="chartDashboardItem3" />
+        <LayoutGroup>
+          <LayoutItem DashboardItem="pieDashboardItem2" />
+          <LayoutItem DashboardItem="chartDashboardItem2" />
+        </LayoutGroup>
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
