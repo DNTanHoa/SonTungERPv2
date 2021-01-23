@@ -155,12 +155,12 @@ namespace SonTungERP.Module.Controllers.Process
                 result.SetMemberValue("Group", result?.Department?.Group);
             }
 
-            //if (!string.IsNullOrEmpty(rowData["Job"]?.ToString()))
-            //{
-            //    var job = jobs
-            //        .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Job"]?.ToString().ToUpper());
-            //    result.SetMemberValue("Job", job);
-            //}
+            if (!string.IsNullOrEmpty(rowData["Job"]?.ToString()))
+            {
+                var job = jobs
+                    .FirstOrDefault(item => item.Name?.ToUpper() == rowData["Job"]?.ToString().ToUpper());
+                result.SetMemberValue("Job", job);
+            }
 
             if (!string.IsNullOrEmpty(rowData["Designation"]?.ToString()))
             {
@@ -356,7 +356,6 @@ namespace SonTungERP.Module.Controllers.Process
             {
                 using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                 {
-
                     var dataSet = reader.AsDataSet(new ExcelDataSetConfiguration
                     {
                         ConfigureDataTable = _ => new ExcelDataTableConfiguration
@@ -379,7 +378,6 @@ namespace SonTungERP.Module.Controllers.Process
                             }
                         }
 
-                        ///Map data from excel to bussiness object
                         process_map_employee_checkin_data(
                             objectSpace,
                             table,

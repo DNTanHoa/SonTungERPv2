@@ -617,42 +617,48 @@
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="80.4635761589404">
-            <LayoutGroup Id="Employee" RelativeSize="69.34156378600824" Caption="Thông tin chung">
-              <LayoutGroup Id="Employee_col1" RelativeSize="49.92435703479576">
-                <LayoutItem Id="AvartarData" ViewItem="AvartarData" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
-                <LayoutItem Id="Code" RelativeSize="7.894736842105263" Index="1" />
-                <LayoutItem Id="FullName" RelativeSize="7.894736842105263" Index="2" />
-                <LayoutItem Id="Gender" RelativeSize="7.894736842105263" Index="3" />
-                <LayoutItem Id="DateOfBirth" RelativeSize="7.894736842105263" Index="4" />
-                <LayoutItem Id="DateOfJoining" RelativeSize="7.894736842105263" Index="5" />
-                <LayoutItem Id="TaxCode" RelativeSize="7.894736842105263" Index="6" />
-                <LayoutItem Id="Department" RelativeSize="7.894736842105263" Index="7" />
+          <LayoutGroup Id="SimpleEditors" RelativeSize="82.54437869822485">
+            <LayoutGroup Id="Employee" RelativeSize="73.29749103942652" Caption="Thông tin chung">
+              <LayoutGroup Id="Employee_col1" RelativeSize="49.92526158445441">
+                <LayoutItem Id="AvartarData" ViewItem="AvartarData" Index="0" RelativeSize="8.51063829787234" IsNewNode="True" />
+                <LayoutItem Id="AttendanceDeviceID" RelativeSize="6.382978723404255" />
+                <LayoutItem Id="Code" RelativeSize="6.382978723404255" Index="2" />
+                <LayoutItem Id="FullName" RelativeSize="6.382978723404255" Index="3" />
+                <LayoutItem Id="Gender" RelativeSize="6.382978723404255" Index="4" />
+                <LayoutItem Id="DateOfBirth" RelativeSize="6.382978723404255" Index="5" />
+                <LayoutItem Id="DateOfJoining" RelativeSize="6.382978723404255" Index="6" />
+                <LayoutItem Id="TaxCode" RelativeSize="6.382978723404255" Index="7" />
+                <LayoutItem Id="Department" RelativeSize="6.382978723404255" Index="8" />
                 <LayoutItem Id="Designation" RelativeSize="9.375" Index="8" Removed="True" />
-                <LayoutItem Id="HasLeft" ViewItem="HasLeft" Index="8" RelativeSize="34.21052631578947" IsNewNode="True" />
                 <LayoutItem Id="Job" RelativeSize="28.571428571428573" Index="8" Removed="True" />
                 <LayoutItem Id="Religion" Index="8" RelativeSize="8.571428571428571" Removed="True" />
+                <LayoutItem Id="HasLeft" ViewItem="HasLeft" Index="9" RelativeSize="6.382978723404255" IsNewNode="True" />
                 <LayoutItem Id="Identity" Index="9" RelativeSize="20" Removed="True" />
+                <LayoutItem Id="IdentiyLicesenPlace" Index="10" RelativeSize="34.04255319148936" />
                 <LayoutItem Id="Nation" RelativeSize="11.428571428571429" Index="10" Removed="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Employee_col2" RelativeSize="50.07564296520424">
-                <LayoutItem Id="Designation" ViewItem="Designation" Index="0" RelativeSize="10.526315789473685" IsNewNode="True" />
-                <LayoutItem Id="Nation" ViewItem="Nation" Index="1" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="Identity" ViewItem="Identity" Index="2" RelativeSize="7.894736842105263" IsNewNode="True" />
-                <LayoutItem Id="IdetityLicesenDate" RelativeSize="7.894736842105263" Index="4" />
-                <LayoutItem Id="Social" RelativeSize="7.894736842105263" Index="5" />
-                <LayoutItem Id="EducationLevel" RelativeSize="7.894736842105263" Index="6" />
-                <LayoutItem Id="School" RelativeSize="7.894736842105263" Index="7" />
-                <LayoutItem Id="Group" Index="8" RelativeSize="7.894736842105263" />
-                <LayoutItem Id="Major" RelativeSize="7.894736842105263" Index="9" />
-                <LayoutItem Id="Religion" ViewItem="Religion" Index="10" RelativeSize="7.894736842105263" IsNewNode="True" />
+              <LayoutGroup Id="Employee_col2" RelativeSize="50.07473841554559">
+                <LayoutItem Id="Job" ViewItem="Job" Index="0" RelativeSize="8.51063829787234" IsNewNode="True" />
+                <LayoutItem Id="Designation" ViewItem="Designation" Index="1" RelativeSize="6.382978723404255" IsNewNode="True" />
+                <LayoutItem Id="PlaceOfBirth" Index="2" RelativeSize="6.382978723404255" />
+                <LayoutItem Id="Nation" ViewItem="Nation" Index="3" RelativeSize="6.382978723404255" IsNewNode="True" />
+                <LayoutItem Id="Identity" ViewItem="Identity" Index="4" RelativeSize="6.382978723404255" IsNewNode="True" />
+                <LayoutItem Id="IdetityLicesenDate" RelativeSize="6.382978723404255" Index="5" />
+                <LayoutItem Id="Social" RelativeSize="6.382978723404255" Index="6" />
+                <LayoutItem Id="EducationLevel" RelativeSize="6.382978723404255" Index="7" />
+                <LayoutItem Id="School" RelativeSize="6.382978723404255" Index="8" />
+                <LayoutItem Id="Group" Index="9" RelativeSize="6.382978723404255" />
+                <LayoutItem Id="YearOld" Index="10" RelativeSize="6.382978723404255" />
+                <LayoutItem Id="Experience" Index="11" RelativeSize="6.382978723404255" />
                 <LayoutItem Id="MaritalStatus" RelativeSize="10.526315789473685" Index="11" Removed="True" />
-                <LayoutItem Id="Status" Index="11" RelativeSize="10.526315789473685" />
+                <LayoutItem Id="Major" RelativeSize="6.382978723404255" Index="12" />
+                <LayoutItem Id="Religion" ViewItem="Religion" Index="13" RelativeSize="6.382978723404255" IsNewNode="True" />
+                <LayoutItem Id="Status" Index="14" RelativeSize="8.51063829787234" />
                 <LayoutItem Id="AvartarData" RelativeSize="7.317073170731708" Removed="True" />
                 <LayoutItem Id="HasLeft" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="SystemBaseObject" RelativeSize="30.65843621399177">
+            <LayoutGroup Id="SystemBaseObject" RelativeSize="26.70250896057348">
               <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Tra cứu" IsNewNode="True">
                 <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
                 <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
@@ -665,7 +671,7 @@
               <LayoutItem Id="UpdateUser" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" RelativeSize="19.5364238410596">
+          <TabbedGroup Id="Tabs" RelativeSize="17.45562130177515">
             <LayoutGroup Id="Contracts" RelativeSize="100">
               <LayoutItem Id="Contracts" RelativeSize="100" />
             </LayoutGroup>
@@ -687,6 +693,15 @@
             <LayoutGroup Id="EmplyeeUpgrades" RelativeSize="100">
               <LayoutItem Id="EmplyeeUpgrades" RelativeSize="100" />
             </LayoutGroup>
+            <LayoutGroup Id="Experiences" RelativeSize="100">
+              <LayoutItem Id="Experiences" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Educations" RelativeSize="100">
+              <LayoutItem Id="Educations" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Skills" RelativeSize="100">
+              <LayoutItem Id="Skills" RelativeSize="100" />
+            </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
@@ -701,25 +716,27 @@
         <ColumnInfo Id="UpdateUser" PropertyName="UpdateUser" Index="-1" Width="70" Removed="True" />
         <ColumnInfo Id="Code" Width="84" Index="0" />
         <ColumnInfo Id="AttendanceDeviceID" Index="1" Width="117" />
-        <ColumnInfo Id="Department" Width="104" Index="2" SortOrder="Ascending" GroupIndex="1" SortIndex="-1" PropertyName="Department.Code" Caption="Bộ phận" />
-        <ColumnInfo Id="FullName" Width="67" MaxLength="400" Index="3" />
+        <ColumnInfo Id="FullName" Width="67" MaxLength="400" Index="2" />
+        <ColumnInfo Id="Department" Width="104" Index="3" SortOrder="Ascending" GroupIndex="1" SortIndex="-1" PropertyName="Department.Code" Caption="Bộ phận" />
         <ColumnInfo Id="Gender" Width="58" Index="4" />
         <ColumnInfo Id="DateOfBirth" Width="67" Index="5" />
         <ColumnInfo Id="DateOfJoining" Width="85" Index="6" />
-        <ColumnInfo Id="TaxCode" Width="73" Index="7" />
-        <ColumnInfo Id="Designation" Width="74" />
-        <ColumnInfo Id="Nation" Width="57" />
+        <ColumnInfo Id="Designation" Width="74" Index="7" />
+        <ColumnInfo Id="Job" PropertyName="Job.Name" Index="8" IsNewNode="True" Removed="True" />
+        <ColumnInfo Id="Nation" Width="57" Index="9" />
         <ColumnInfo Id="PlaceOfBirth" Index="10" Width="85" />
         <ColumnInfo Id="HasLeft" Width="63" Index="11" />
         <ColumnInfo Id="Status" Width="69" Index="12" />
-        <ColumnInfo Id="Group" Width="60" SortOrder="Descending" GroupIndex="0" Index="13" />
+        <ColumnInfo Id="TaxCode" Width="73" Index="13" />
+        <ColumnInfo Id="Group" Width="60" SortOrder="Descending" GroupIndex="0" Index="14" />
+        <ColumnInfo Id="YearOld" Index="15" />
+        <ColumnInfo Id="Experience" Index="16" />
         <ColumnInfo Id="Avartar" Removed="True" />
         <ColumnInfo Id="AvartarData" Removed="True" />
         <ColumnInfo Id="EducationLevel" Removed="True" />
         <ColumnInfo Id="Identity" Removed="True" />
         <ColumnInfo Id="IdentiyLicesenPlace" Removed="True" />
         <ColumnInfo Id="IdetityLicesenDate" Removed="True" />
-        <ColumnInfo Id="Job" Width="100" Removed="True" />
         <ColumnInfo Id="Major" Removed="True" />
         <ColumnInfo Id="MaritalStatus" Removed="True" />
         <ColumnInfo Id="Religion" Removed="True" />
@@ -1130,20 +1147,22 @@
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="28.330206378986865">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="28.277153558052433">
             <LayoutGroup Id="ShiftType" RelativeSize="100" Direction="Horizontal">
-              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="49.35622317596567" Caption="Thông tin ca" IsNewNode="True">
+              <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="49.57627118644068" Caption="Thông tin ca" IsNewNode="True">
                 <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
                 <LayoutItem Id="Name" ViewItem="Name" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
-                <LayoutItem Id="MaxWorkingHour" ViewItem="MaxWorkingHour" Index="2" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="MaxWorkingHour" ViewItem="MaxWorkingHour" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                <LayoutItem Id="IsOvernight" ViewItem="IsOvernight" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Tra cứu" CaptionLocation="Top" Index="1" RelativeSize="50.64377682403433" IsNewNode="True">
+              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Tra cứu" CaptionLocation="Top" Index="1" RelativeSize="50.42372881355932" IsNewNode="True">
                 <LayoutItem Id="CreateUser" ViewItem="CreateUser" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
                 <LayoutItem Id="UpdateUser" ViewItem="UpdateUser" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
                 <LayoutItem Id="CreateDate" ViewItem="CreateDate" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
                 <LayoutItem Id="UpdateDate" ViewItem="UpdateDate" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
               </LayoutGroup>
               <LayoutItem Id="Code" Removed="True" />
+              <LayoutItem Id="IsOvernight" Removed="True" />
               <LayoutItem Id="MaxWorkingHour" Removed="True" />
               <LayoutItem Id="Name" Removed="True" />
             </LayoutGroup>
@@ -1154,7 +1173,7 @@
               <LayoutItem Id="UpdateUser" RelativeSize="22.857142857142858" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="Times_Group" Direction="Vertical" RelativeSize="71.66979362101313">
+          <LayoutGroup Id="Times_Group" Direction="Vertical" RelativeSize="71.72284644194757">
             <LayoutItem Id="Times" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>

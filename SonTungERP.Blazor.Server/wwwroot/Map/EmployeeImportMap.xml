@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sheet name="NHÂN VIÊN">
   <Column propertyName="Code" excelHeader="Mã nhân viên"/>
-  <Column propertyName="AttendanceDeviceID" excelHeader="Số thẻ"/>
+  <Column propertyName="AttendanceDeviceID" excelHeader="Mã điểm danh"/>
   <Column propertyName="FullName" excelHeader="Họ và tên"/>
   <Column propertyName="DepartmentCode" excelHeader="Mã bộ phận"/>
   <Column propertyName="Department" excelHeader="Bộ phận"/>
-  <Column propertyName="Group" excelHeader="Nhóm"/>
+  <Column propertyName="Group" excelHeader="Nhóm"/> 
   <Column propertyName="DateOfJoining" excelHeader="Ngày vào"/>
   <Column propertyName="DateOfBirth" excelHeader="Ngày sinh"/>
   <Column propertyName="Gender" excelHeader="Giới tính"/>
   <Column propertyName="Nationality" excelHeader="Quốc tịch"/>
   <Column propertyName="Designation" excelHeader="Chức vụ"/>
+  <Column propertyName="Job" excelHeader="Chức danh"/>
   <Column propertyName="Nation" excelHeader="Dân tộc"/>
   <Column propertyName="Status" excelHeader="Trạng thái"/>
   <Column propertyName="Religion" excelHeader="Tôn giáo"/>

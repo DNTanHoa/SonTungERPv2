@@ -107,7 +107,8 @@ namespace SonTungERP.Module.BusinessObjects
 
         [NonPersistent]
         [VisibleInListView(false)]
-        public double TotalHours => (this.ToTime - this.FromTime).TotalHours;
+        public double TotalHours => this.isOvernight ? 
+            (this.ToTime.AddDays(1) - this.FromTime).TotalHours : (this.ToTime - this.FromTime).TotalHours;
 
         [NonPersistent]
         [VisibleInListView(false)]
