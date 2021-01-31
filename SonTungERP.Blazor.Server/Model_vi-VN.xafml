@@ -1,2 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application />
+<Application>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Security.ChangePasswordOnLogonParameters">
+      <OwnMembers>
+        <Member Name="ConfirmPassword" Caption="Xác nhận mật khẩu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.AboutInfo">
+      <OwnMembers>
+        <Member Name="Company" Caption="Công ty" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+</Application>

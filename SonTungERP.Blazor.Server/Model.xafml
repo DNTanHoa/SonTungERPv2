@@ -35,6 +35,26 @@
     </Actions>
   </ActionDesign>
   <BOModel>
+    <Class Name="DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters">
+      <OwnMembers>
+        <Member Name="UserName" Caption="User Name" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.ChangePasswordOnLogonParameters">
+      <OwnMembers>
+        <Member Name="NewPassword" Caption="Mật khẩu mới" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.ChangePasswordParameters">
+      <OwnMembers>
+        <Member Name="OldPassword" Caption="Mật khẩu cũ" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.ModelDifference">
+      <OwnMembers>
+        <Member Name="UserName" Caption="User Name" />
+      </OwnMembers>
+    </Class>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRoleBase">
       <OwnMembers>
         <Member Name="IsAdministrative" Caption="Nhóm Admin" />
@@ -80,6 +100,16 @@
       </OwnMembers>
     </Class>
   </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Exceptions">
+      <LocalizationGroup Name="UserVisibleExceptions">
+        <LocalizationGroup Name="Security">
+          <LocalizationItem Name="NewPasswordIsEqualToOldPassword" Value="Mật khẩu mới trùng với mật khẩu cũ" />
+          <LocalizationItem Name="OldPasswordIsWrong" Value="Mât khẩu cũ không hợp lệ." />
+        </LocalizationGroup>
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
   <NavigationItems>
     <Items>
       <Item Id="@68aac97b-1f69-45a5-ae4e-ba000f237027" Caption="Báo cáo" Index="-2" IsNewNode="True" />
@@ -555,7 +585,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <DetailView Id="ChangePasswordOnLogonParameters_Blazor_DetailView">
+    <DetailView Id="ChangePasswordOnLogonParameters_Blazor_DetailView" Caption="Thay đổi mật khẩu">
       <Items>
         <PropertyEditor Id="ConfirmPassword" Caption="Xác nhận mật khẩu" />
         <PropertyEditor Id="NewPassword" Caption="Mật khẩu mới" />
@@ -571,6 +601,9 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="ChangePasswordOnLogonParameters_DetailView" Caption="Thay đổi mật khẩu" />
+    <DetailView Id="ChangePasswordParameters_Blazor_DetailView" Caption="Thay đổi mật khẩu" />
+    <DetailView Id="ChangePasswordParameters_DetailView" Caption="Thay đổi mật khẩu" />
     <DetailView Id="CheckInImportParam_DetailView">
       <Items>
         <PropertyEditor Id="Template" PropertyEditorType="SonTungERP.Module.Blazor.LinkPropertyEditor" />
@@ -951,7 +984,7 @@
       <Items>
         <PropertyEditor Id="ChangePasswordOnFirstLogon" Caption="Bắt buộc đổi mật khẩu" />
         <PropertyEditor Id="IsActive" Caption="Kích hoạt" />
-        <PropertyEditor Id="UserName" Caption="Tài khoản" />
+        <PropertyEditor Id="UserName" Caption="User Name" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
